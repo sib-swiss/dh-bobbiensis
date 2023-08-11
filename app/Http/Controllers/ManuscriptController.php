@@ -32,10 +32,16 @@ class ManuscriptController extends Controller
         return view('manuscript', ['manuscript' => $manuscript]);
     }
 
-    public function showPage(string $manuscriptName, int $pageNumber): View
+    public function showPage(string $manuscriptName, $pageNumber): View
     {
         $manuscript = Manuscript::firstWhere('name', $manuscriptName);
-        $manuscriptFolio = $manuscript->folios[$pageNumber - 1];
+        if (! $manuscript) {
+            abort(404);
+        }
+        $manuscriptFolio = isset($manuscript->folios[(int) $pageNumber - 1]) ? $manuscript->folios[(int) $pageNumber - 1] : null;
+        if (! $manuscriptFolio) {
+            abort(404);
+        }
 
         $lang = request()->lang;
         if (in_array($lang, ['ENG', 'FRA', 'GER'])) {
