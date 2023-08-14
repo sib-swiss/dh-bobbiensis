@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Manuscript;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class ManuscriptSeeder extends Seeder
 {
@@ -13,9 +13,19 @@ class ManuscriptSeeder extends Seeder
      */
     public function run(): void
     {
-        $manuscripts = DB::connection('from')->table('manuscripts')->get();
-        foreach ($manuscripts as $manuscripData) {
-            Manuscript::create((array) $manuscripData);
+
+        $folders = File::directories(storage_path('app/import'));
+        // dd($folders);
+        Manuscript::truncate();
+        foreach ($folders as $folder) {
+            $manuscripData = [
+                'name' => basename($folder),
+                'content' => File::exists($folder.'/metadata.json')
+                    ? json_decode(File::get($folder.'/metadata.json'), true)
+                    : null,
+                'published' => true,
+            ];
+            Manuscript::create($manuscripData);
         }
     }
 }

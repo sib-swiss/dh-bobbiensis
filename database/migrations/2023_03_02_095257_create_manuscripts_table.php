@@ -16,9 +16,9 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name')->unique();
             $table->boolean('published')->default(false);
-            $table->string('url');
-            $table->longText('content');
-            $table->integer('temporal');
+            $table->string('url')->nullable();
+            $table->longText('content')->nullable();
+            $table->integer('temporal')->nullable();
         });
     }
 

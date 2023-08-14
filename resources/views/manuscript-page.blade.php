@@ -1,3 +1,3 @@
 {{-- {!! $manuscriptContentHtml->content !!} --}}
-{!! $manuscriptContentHtml->getAlteredHtml() !!}
+{!! $manuscriptContentHtml ? $manuscriptContentHtml->getAlteredHtml() : 'NO CONTENT FOUND' !!}
 

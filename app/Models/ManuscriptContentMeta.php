@@ -148,9 +148,6 @@ class ManuscriptContentMeta extends ManuscriptContent implements HasMedia
      */
     public function canvas(): object
     {
-        if ($this->media()->count() == 0) {
-            return (object) [];
-        }
 
         $items = [];
         foreach ($this->media as $media) {
@@ -176,12 +173,13 @@ class ManuscriptContentMeta extends ManuscriptContent implements HasMedia
                 'target' => url("/iiif/{$this->manuscript->name}/canvas/p{$this->pageNumber}"),  // 'https://iiif.io/api/cookbook/recipe/0009-book-1/canvas/p1',
             ];
         }
+
         $canvas = [
             'id' => url("/iiif/{$this->manuscript->name}/canvas/p{$this->pageNumber}"),
             'type' => 'Canvas',
             'label' => ['none' => [substr($this->name, 0, -4)]],
-            'height' => $getimagesize[1],
-            'width' => $getimagesize[0],
+            'height' => isset($getimagesize[1]) ? $getimagesize[1] : 100,
+            'width' => isset($getimagesize[0]) ? $getimagesize[0] : 100,
             'items' => [
                 [
                     'id' => url("/iiif/{$this->manuscript->name}/canvas/p{$this->pageNumber}/annopage-1"), //"https://iiif.io/api/cookbook/recipe/0009-book-1/page/p1/1",
