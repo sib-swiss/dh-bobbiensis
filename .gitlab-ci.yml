@@ -3,7 +3,7 @@ stages:
   - testing
   - deploy
 
-image: thecodingmachine/php:8.1-v4-cli
+image: thecodingmachine/php:8.2-v4-cli
 
 # # Variables
 variables:
