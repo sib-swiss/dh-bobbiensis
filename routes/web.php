@@ -34,6 +34,4 @@ Route::get('/iiif/{manuscriptName}/canvas/p{pageNumber}/annotationpage.json', [I
 
 Route::get('/show', [ManuscriptController::class, 'showOld'])->name('manuscript.showold');
 
-
-
 Route::get('/annotation', [AnnotationController::class, 'test'])->name('annotation.test');

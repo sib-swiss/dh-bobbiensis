@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 
 class Nakala
 {
-    public static function getMeta(array $content, string $key): string|null
+    public static function getMeta(array $content, string $key): ?string
     {
         $firstMeta = self::getMetas($content, $key)->first();
 

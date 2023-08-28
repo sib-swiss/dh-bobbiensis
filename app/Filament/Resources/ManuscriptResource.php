@@ -7,17 +7,17 @@ use App\Filament\Resources\ManuscriptResource\RelationManagers\FoliosRelationMan
 use App\Filament\Resources\ManuscriptResource\RelationManagers\PartnersRelationManager;
 use App\Models\Manuscript;
 use Filament\Forms;
+use Filament\Forms\Form;
 use Filament\Notifications\Notification;
-use Filament\Resources\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Table;
 
 class ManuscriptResource extends Resource
 {
     protected static ?string $model = Manuscript::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -101,7 +101,7 @@ class ManuscriptResource extends Resource
 
                     })
                     // ->requiresConfirmation()
-                    ->icon('heroicon-o-refresh')
+                    ->icon('heroicon-o-arrow-path')
                     ->color('success'),
 
                 Tables\Actions\EditAction::make(),

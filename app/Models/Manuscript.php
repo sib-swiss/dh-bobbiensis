@@ -40,7 +40,7 @@ class Manuscript extends Model implements HasMedia
             ->where('collection_name', 'partners');
     }
 
-    public static function syncFromNakalaUrl(string $url = null): Manuscript|null
+    public static function syncFromNakalaUrl(string $url = null): ?Manuscript
     {
         if (! $url) {
             return $url;
@@ -133,7 +133,7 @@ class Manuscript extends Model implements HasMedia
         return $this->getMeta('bibliographicCitation');
     }
 
-    public function getMeta(string $key): string|null
+    public function getMeta(string $key): ?string
     {
         $content = is_array($this->content) ? $this->content : json_decode((string) $this->content, true);
         if (! $this->url) {
