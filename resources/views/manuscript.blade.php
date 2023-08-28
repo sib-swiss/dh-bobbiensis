@@ -171,15 +171,19 @@
             </div>
         </div>
 
-        <div x-data="manuscriptShow({
-            manuscriptName: '{{ $manuscript->name }}',
-            manifest: '{{ route('iiif.presentation.manifest', $manuscript->name) }}'
-        })">
 
-            <div id="mirador"></div>
+        <div class="relative">
+            <div class="h-[800px] w-full">
+                <div x-data="manuscriptShow({
+                    manuscriptName: '{{ $manuscript->name }}',
+                    manifest: '{{ route('iiif.presentation.manifest', $manuscript->name) }}'
+                })">
 
+                    <div id="mirador"></div>
+
+                </div>
+            </div>
         </div>
-
 
 
 
