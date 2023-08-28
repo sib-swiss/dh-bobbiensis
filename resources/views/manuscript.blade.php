@@ -175,86 +175,9 @@
             manuscriptName: '{{ $manuscript->name }}',
             manifest: '{{ route('iiif.presentation.manifest', $manuscript->name) }}'
         })">
-            <div class="lg:flex">
-                <div class="lg:w-1/2">
 
+            <div id="mirador"></div>
 
-
-                    <div class="w-full">
-                        <div class="relative right-0">
-                            <ul class="relative flex list-none flex-wrap bg-blue-gray-50/60 p-1" data-tabs="tabs"
-                                role="list">
-                                <li class="z-30 flex-auto text-center">
-                                    <a class="text-slate-700 z-30 mb-0 flex w-full cursor-pointer items-center justify-center rounded-lg border-0 bg-inherit px-0 py-1 transition-all ease-in-out"
-                                        data-tab-target="" x-bind:active="!lang" role="tab" aria-selected="true"
-                                        active id="diplomaticBtn" @click="lang=''">
-                                        <span class="ml-1">{{ 'CSRPC' === $manuscript->name ? 'Transliteration' : 'Diplomatic' }}</span>
-                                    </a>
-                                </li>
-                                @foreach ($manuscript->folios->first()->contentsTranslations as $translation)
-                                    <li class="z-30 flex-auto text-center">
-                                        <a class="text-slate-700 z-30 mb-0 flex w-full cursor-pointer items-center justify-center rounded-lg border-0 bg-inherit px-0 py-1 transition-all ease-in-out"
-                                            data-tab-target="" role="tab" aria-selected="false"
-                                            @click="lang='{{ $translation->lang['code'] }}'">
-                                            <span class="ml-1">{{ $translation->lang['name'] }}</span>
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-
-                    <template x-if="currentPageUrl">
-                        <iframe class="w-full h-[600px]" :src="currentPageUrl + '?lang=' + lang"></iframe>
-                    </template>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                </div>
-                <div class="relative lg:w-1/2 h-[600px]">
-                    <div id="mirador"></div>
-                </div>
-            </div>
         </div>
 
 

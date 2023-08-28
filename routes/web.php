@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnnotationController;
 use App\Http\Controllers\IIIFImageController;
 use App\Http\Controllers\IIIFPresentationController;
 use App\Http\Controllers\ManuscriptController;
@@ -32,3 +33,7 @@ Route::get('/iiif/{manuscriptName}/manifest.json', [IIIFPresentationController::
 Route::get('/iiif/{manuscriptName}/canvas/p{pageNumber}/annotationpage.json', [IIIFPresentationController::class, 'annotationPage'])->name('iiif.presentation.annotation');
 
 Route::get('/show', [ManuscriptController::class, 'showOld'])->name('manuscript.showold');
+
+
+
+Route::get('/annotation', [AnnotationController::class, 'test'])->name('annotation.test');
