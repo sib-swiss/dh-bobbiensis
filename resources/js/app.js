@@ -4,13 +4,17 @@ import.meta.glob(["../images/**", "../fonts/**"]);
 
 import Alpine from "alpinejs";
 
+// import * as Mirador from "https://unpkg.com/mirador@latest/dist/mirador.min.js";
+
 import * as Mirador from "mirador/dist/mirador.min.js";
 import "@material-tailwind/html/scripts/tabs.js";
 import "@material-tailwind/html/scripts/collapse.js";
 import "@material-tailwind/html/scripts/popover.js";
 import "@material-tailwind/html/scripts/dialog.js";
 
-// import miradorAnnotationPlugin from "./plugins/miradorAnnotationPlugin";
+//import React from "react";
+
+//  import miradorAnnotationPlugin from "./plugins/miradorAnnotationPlugin";
 
 // import miradorAnnotationPlugin from "mirador-annotations/es/plugins/miradorAnnotationPlugin";
 // import externalStorageAnnotationPlugin from "mirador-annotations/es/plugins/externalStorageAnnotationPlugin";
@@ -21,7 +25,17 @@ import "@material-tailwind/html/scripts/dialog.js";
 
 // import AnnototAdapter from "mirador-annotations/es/AnnototAdapter";
 
+// import { miradorAnnotationPlugin  } from "mirador-annotations/umd/mirador-annotations.js";
+
 window.Alpine = Alpine;
+
+// const DummyPlugin = () => <div data-testid="plugin">Plugin</div>;
+// const DummyPlugin = () =>
+//     React.createElement(
+//         "div",
+//         { "data-testid": "plugin" },
+//         "Annotations Categories checkboxes"
+//     );
 
 Alpine.data("manuscriptShow", (data = []) => ({
     miradorInstance: null,
@@ -30,7 +44,12 @@ Alpine.data("manuscriptShow", (data = []) => ({
     // See here for more details:
     // https://github.com/ProjectMirador/mirador/blob/master/src/config/settings.js
     init() {
-        console.log("manuscriptShow.data", data);
+        this.initMirador();
+    },
+
+    initMirador() {
+        // let Mirador = window.Mirador;
+        // console.log("manuscriptShow.data", Mirador, data);
 
         let collectionContent = {
             collection: null,
@@ -86,10 +105,9 @@ Alpine.data("manuscriptShow", (data = []) => ({
                     allowTopMenuButton: true, // Configure if window view and thumbnail display menu are visible or not
                     allowWindowSideBar: true, // Configure if side bar menu is visible or not
                     authNewWindowCenter: "parent", // Configure how to center a new window created by the authentication flow. Options: parent, screen
-                    sideBarPanel:
-                        "info, attribution, canvas, annotations, search", // Configure which sidebar is selected by default. Options: info, attribution, canvas, annotations, search
-                    defaultSidebarPanelHeight: 201, // Configure default sidebar height in pixels
-                    defaultSidebarPanelWidth: 235, // Configure default sidebar width in pixels
+                    sideBarPanel: "annotations", // Configure which sidebar is selected by default. Options: info, attribution, canvas, annotations, search
+                    // defaultSidebarPanelHeight: 201, // Configure default sidebar height in pixels
+                    defaultSidebarPanelWidth: 500, // Configure default sidebar width in pixels
                     defaultView: "single", // Configure which viewing mode (e.g. single, book, gallery) for windows to be opened in
                     forceDrawAnnotations: true,
                     hideWindowTitle: false, // Configure if the window title is shown in the window title bar or not
@@ -131,50 +149,63 @@ Alpine.data("manuscriptShow", (data = []) => ({
                         loadedManifest: data.manifest,
                     },
                 ],
-                annotation: {
-                    adapter: (canvasId) =>
-                        new LocalStorageAdapter(
-                            `localStorage://?canvasId=${canvasId}`
-                        ),
-                    // adapter: (canvasId) =>
-                    //     new AnnototAdapter(canvasId, "/api/annotations"),
-                    exportLocalStorageAnnotations: true, // display annotation JSON export button
-                },
+                // annotation: {
+                //     adapter: (canvasId) =>
+                //         new LocalStorageAdapter(
+                //             `localStorage://?canvasId=${canvasId}`
+                //         ),
+                //     // adapter: (canvasId) =>
+                //     //     new AnnototAdapter(canvasId, "/api/annotations"),
+                //     exportLocalStorageAnnotations: true, // display annotation JSON export button
+                // },
                 workspace: {
                     showZoomControls: true,
                     type: "mosaic", // Which workspace type to load by default. Other possible values are "elastic"
                 },
-            }
+            },
+            // {
+            //     plugins: [
+            //         {
+            //             component: DummyPlugin,
+            //             config: {
+            //                 foo: "bar",
+            //             },
+            //             mode: "wrap",
+            //             target: "AnnotationSettings",
+            //         },
+            //     ],
+            // }
             // PLUGINS
-            // [
-            //     miradorAnnotationPlugin,
-            //     // externalStorageAnnotationPlugin,
-            //     // canvasAnnotationsPlugin,
-            //     // annotationCreationCompanionWindow,
-            //     // windowSideBarButtonsPlugin,
-            // ]
+            [
+                // miradorAnnotationPlugin,
+                // externalStorageAnnotationPlugin,
+                // canvasAnnotationsPlugin,
+                // annotationCreationCompanionWindow,
+                // windowSideBarButtonsPlugin,
+            ]
         );
 
-        this.miradorInstance.store.subscribe(() => {
-            let state = this.miradorInstance.store.getState();
-            if (state.windows) {
-                let canvasId = Object.values(state.windows)[0].canvasId;
-                if (canvasId) {
-                    let pageNumber = canvasId.split("/").at(6).substring(1);
-                    this.currentPageUrl = "";
-                    // document.getElementById("diplomaticBtn").click();
-                    // console.log("subscribe.canvasId", canvasId.split("/"), canvasId, pageNumber);
-                    let newCurrentPageUrl =
-                        "/manuscript/" +
-                        data.manuscriptName +
-                        "/page/" +
-                        pageNumber;
-                    if (newCurrentPageUrl !== this.currentPageUrl) {
-                        this.currentPageUrl = newCurrentPageUrl;
-                    }
-                }
-            }
-        });
+        // WHEN CHANGE FOLIO
+        // this.miradorInstance.store.subscribe(() => {
+        //     let state = this.miradorInstance.store.getState();
+        //     if (state.windows) {
+        //         let canvasId = Object.values(state.windows)[0].canvasId;
+        //         if (canvasId) {
+        //             let pageNumber = canvasId.split("/").at(6).substring(1);
+        //             this.currentPageUrl = "";
+        //             // document.getElementById("diplomaticBtn").click();
+        //             // console.log("subscribe.canvasId", canvasId.split("/"), canvasId, pageNumber);
+        //             let newCurrentPageUrl =
+        //                 "/manuscript/" +
+        //                 data.manuscriptName +
+        //                 "/page/" +
+        //                 pageNumber;
+        //             if (newCurrentPageUrl !== this.currentPageUrl) {
+        //                 this.currentPageUrl = newCurrentPageUrl;
+        //             }
+        //         }
+        //     }
+        // });
     },
 }));
 
