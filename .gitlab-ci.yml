@@ -7,7 +7,7 @@ image: thecodingmachine/php:8.2-v4-cli
 
 # # Variables
 variables:
-  PHP_EXTENSIONS: gd intl
+  PHP_EXTENSIONS: gd intl pdo_sqlite
 
 cache:
   key: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
