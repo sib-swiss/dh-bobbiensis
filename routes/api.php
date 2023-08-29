@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/annotations/create', [App\Http\Controllers\AnnotationAPIController::class, 'store'])->name('annotation.store');
+Route::post('/annotations/update', [App\Http\Controllers\AnnotationAPIController::class, 'update'])->name('annotation.update');
+Route::post('/annotations/all', [App\Http\Controllers\AnnotationAPIController::class, 'getAllByCanvasId'])->name('annotation.getAllByCanvasId');

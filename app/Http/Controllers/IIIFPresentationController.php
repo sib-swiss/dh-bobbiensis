@@ -47,7 +47,7 @@ class IIIFPresentationController extends Controller
         $manuscript = Manuscript::firstWhere('name', $manuscriptName);
         $manuscriptFolio = $manuscript->folios[$pageNumber - 1];
 
-        return response()->json($manuscriptFolio->annotations(), 200, [], JSON_PRETTY_PRINT);
+        return response()->json($manuscriptFolio->annotationPage(), 200, [], JSON_PRETTY_PRINT);
     }
 
     // https://iiif.io/api/presentation/3.0/#57-content-resources

@@ -198,10 +198,15 @@ class ManuscriptContentMeta extends ManuscriptContent implements HasMedia
         return (object) $canvas;
     }
 
+    public function annotations()
+    {
+        return $this->hasMany(Annotation::class);
+    }
+
     /**
      * https://iiif.io/api/presentation/3.0/#53-canvas
      */
-    public function annotations(): object
+    public function annotationPage(): object
     {
 
         $exampleJson = '{
@@ -273,7 +278,7 @@ class ManuscriptContentMeta extends ManuscriptContent implements HasMedia
             ],
         ];
 
-        $annotationPage['items'][] = $annotationExample1;
+        // $annotationPage['items'][] = $annotationExample1;
         $annotationExample2 = [
             'id' => url("/iiif/{$this->manuscript->name}/canvas/p{$this->pageNumber}/annopage-2/anno-2"),
             'type' => 'Annotation',
@@ -298,7 +303,49 @@ class ManuscriptContentMeta extends ManuscriptContent implements HasMedia
             ],
         ];
 
-        $annotationPage['items'][] = $annotationExample2;
+        // $annotationPage['items'][] = $annotationExample2;
+
+        // dd($this->annotations);
+        foreach ($this->annotations as $annotation) {
+
+            $selectors = [];
+            foreach ($annotation->annotationSelectors as $selector) {
+                $selectors[] = [
+                    'type' => $selector->type,
+                    'value' => $selector->value,
+                ];
+            }
+
+            $annotationItem = [
+                // 'id' => url("/iiif/{$this->manuscript->name}/canvas/p{$this->pageNumber}/annopage-2/anno-1"),
+                'id' => $annotation->item_id,
+                'type' => $annotation->type,
+                'motivation' => $annotation->motivation,
+                'body' => [
+                    'type' => $annotation->body_type,
+                    // 'language' => 'de',
+                    'format' => 'text/html',
+                    'value' => $annotation->body_value,
+                ],
+                'target' => [
+                    'type' => 'SpecificResource',
+                    // 'source' => [
+                    //     'id' => url("/iiif/{$this->manuscript->name}/canvas/p{$this->pageNumber}"),
+                    //     'type' => 'Canvas',
+                    // ],
+                    // canvasId: "http://localhost/iiif/VL 1 Mark 15:46b-16:8/canvas/p1"
+                    'source' => url("/iiif/{$this->manuscript->name}/canvas/p{$this->pageNumber}"),
+                    'selector' => $selectors,
+                    // [
+                    //     'type' => 'FragmentSelector',
+                    //     'conformsTo' => 'http://www.w3.org/TR/media-frags/',
+                    //     'value' => 'xywh=300,800,1200,1200',
+                    // ],
+                ],
+            ];
+            $annotationPage['items'][] = $annotationItem;
+
+        }
 
         return (object) $annotationPage;
     }
