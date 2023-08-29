@@ -2,7 +2,10 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "annotation-install": "cd resources/mirador-annotations && . ~/.nvm/nvm.sh && nvm use 14 && npm install",
+        "annotation-build": "cd resources/mirador-annotations && . ~/.nvm/nvm.sh && nvm use 14 && npm run build",
+        "annotation-start": "cd resources/mirador-annotations && . ~/.nvm/nvm.sh && nvm use 14 && npm run start"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5",
