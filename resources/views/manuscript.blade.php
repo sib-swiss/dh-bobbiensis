@@ -168,7 +168,7 @@
 
                     <div>
                         <a href='/mirador-annotations/?manuscript={{ $manuscript->name }}' target="edit-annotations">EDIT
-                            ANNOTATION</a>
+                            ANNOTATIONS</a>
                     </div>
                 </div>
 
