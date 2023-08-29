@@ -166,6 +166,10 @@
                         <div class="opacity-0"></div>
                     </div>
 
+                    <div>
+                        <a href='/mirador-annotations/?manuscript={{ $manuscript->name }}' target="edit-annotations">EDIT
+                            ANNOTATION</a>
+                    </div>
                 </div>
 
             </div>
