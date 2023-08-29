@@ -198,6 +198,7 @@ class Manuscript extends Model implements HasMedia
         $manifest['@context'] = 'http://iiif.io/api/presentation/3/context.json';
         $manifest['type'] = 'Manifest';
         $manifest['id'] = url("/iiif/{$this->name}/manifest.json");
+        // $manifest['label'] = $this->name;
         $manifest['metadata'] = [];
         $creator = $this->getMeta('creator');
         if ($creator) {
@@ -217,11 +218,8 @@ class Manuscript extends Model implements HasMedia
             ];
         }
 
-        $manifest['label'] = (object) [
-            'en' => [
-                $this->getMeta('bibliographicCitation'),
-            ],
-        ];
+        $manifest['label'] = $this->name; //$this->getMeta('bibliographicCitation');
+
         $manifest['behavior'] = [
             'individuals',
         ];

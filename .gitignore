@@ -17,3 +17,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+
+resources/mirador-annotations/node_modules
