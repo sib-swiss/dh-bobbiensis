@@ -22,7 +22,10 @@ class ManuscriptResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
+            Forms\Components\TextInput::make('temporal'),
+            Forms\Components\TextInput::make('name'),
             Forms\Components\TextInput::make('url')
+                ->label('Nakala URL')
                 ->unique('manuscripts', 'url', ignoreRecord: true),
             Forms\Components\Toggle::make('published'),
         ]);
@@ -83,8 +86,8 @@ class ManuscriptResource extends Resource
             ])
             ->actions([
                 Tables\Actions\Action::make('Nakala')
-                    ->label('')
-                    ->tooltip('Sync from Nakala')
+                    ->disabled(fn (Manuscript $record) => ! $record->url)
+                    ->tooltip(fn (Manuscript $record) => $record->url ? 'Sync from Nakala' : 'No Nakala URL')
                     ->action(function (Manuscript $record) {
                         $syncFromNakala = $record->syncFromNakala();
                         if (isset($syncFromNakala['version'])) {

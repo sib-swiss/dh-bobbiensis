@@ -21,6 +21,7 @@ class FoliosRelationManager extends RelationManager
     {
 
         return $form->schema([
+            Forms\Components\TextInput::make('name'),
             SpatieMediaLibraryFileUpload::make('image'),
             Forms\Components\Textarea::make('copyright'),
             Forms\Components\TextInput::make('fontsize'),
@@ -72,6 +73,32 @@ class FoliosRelationManager extends RelationManager
 
                     }),
             ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make()
+                    ->using(function (FoliosRelationManager $livewire, array $data) {
+                        $manuscript = $livewire->getOwnerRecord();
+
+                        $manuscriptFolio = ManuscriptContentMeta::create([
+                            'name' => $data['name'],
+                            'extension' => 'xml',
+                            'manuscript_id' => $manuscript->id,
+                        ]);
+                        if (isset($data['image'])) {
+                            $imagePath = storage_path("/app/public/{$data['image']}");
+                            if (file_exists($imagePath)) {
+                                $addMedia = $manuscriptFolio->addMedia($imagePath)
+                                    ->preservingOriginal()
+                                    ->withCustomProperties([
+                                        'fontsize' => $data['fontsize'],
+                                        'copyright' => $data['copyright'],
+                                    ])
+                                    ->toMediaCollection();
+                            }
+                        }
+
+                        return $manuscriptFolio;
+                    }),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make()
                     ->mutateRecordDataUsing(function (array $data): array {
@@ -83,6 +110,11 @@ class FoliosRelationManager extends RelationManager
 
                         return $data;
                     })->using(function (ManuscriptContentMeta $record, array $data): ManuscriptContentMeta {
+
+                        $record->update([
+                            'name' => $data['name'],
+                        ]);
+
                         $mediaItem = $record->getFirstMedia();
                         if ($mediaItem) {
                             $mediaItem->setCustomProperty('fontsize', $data['fontsize']);

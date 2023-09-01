@@ -13,7 +13,12 @@ class CreateManuscript extends CreateRecord
 
     protected function handleRecordCreation(array $data): Model
     {
-        $manuscript = Manuscript::syncFromNakalaUrl($data['url']);
+        $manuscript = isset($data['url'])
+            ? Manuscript::syncFromNakalaUrl($data['url'])
+            : Manuscript::create([
+                'name' => $data['name'],
+                'temporal' => $data['temporal'],
+            ]);
         $manuscript->published = $data['published'];
         $manuscript->save();
 
