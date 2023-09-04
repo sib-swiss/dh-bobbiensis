@@ -35,7 +35,7 @@ class Annotation extends Model
 
     protected static function booted()
     {
-        static::deleting(function ($annotation) {
+        static::deleted(function ($annotation) {
             $annotation->annotationSelectors()->delete();
         });
     }

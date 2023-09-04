@@ -165,8 +165,21 @@ class AnnotationAPIController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(Request $request)
     {
-        //
+        $annoId = $request['annoId'];
+
+        $annotation = Annotation::where('item_id', $annoId)->first();
+        if ($annotation) {
+            $annotation->delete();
+
+            return response()->json([
+                'result' => 'success',
+            ]);
+        }
+
+        return response()->json([
+            'result' => 'false',
+        ]);
     }
 }

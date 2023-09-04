@@ -20,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/annotations/create', [App\Http\Controllers\AnnotationAPIController::class, 'store'])->name('annotation.store');
 Route::post('/annotations/update', [App\Http\Controllers\AnnotationAPIController::class, 'update'])->name('annotation.update');
+Route::post('/annotations/delete', [App\Http\Controllers\AnnotationAPIController::class, 'delete'])->name('annotation.delete');
 Route::post('/annotations/all', [App\Http\Controllers\AnnotationAPIController::class, 'getAllByCanvasId'])->name('annotation.getAllByCanvasId');
