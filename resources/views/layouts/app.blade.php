@@ -23,8 +23,8 @@
                             </a>
                         </li>
                         <li class="block p-1 text-md font-normal leading-normal text-inherit antialiased">
-                            <a class="flex items-center text-white hover:text-black" href="{{ route('search') }}">
-                                Advanced Search
+                            <a class="flex items-center text-white hover:text-black" href="{{ route('vl1') }}">
+                                VL 1
                             </a>
                         </li>
                     </ul>
@@ -32,7 +32,7 @@
 
                 <div class="hidden lg:inline-block">
                     <form action="{{ route('results') }}" method="get" class="flex">
-                        <input type="text" name="subject" class="text-gray-800" placeholder="INTF Liste manuscript name"
+                        <input type="text" name="subject" class="text-gray-800" placeholder=""
                             value="{{ request()->subject }}">
                         <button type="submit">Search</button>
                     </form>
@@ -62,8 +62,8 @@
                             </a>
                         </li>
                         <li class="block p-1 text-sm font-normal leading-normal text-inherit antialiased">
-                            <a class="flex items-center" href="{{ route('search') }}">
-                                Advanced Search
+                            <a class="flex items-center" href="{{ route('vl1') }}">
+                                VL 1
                             </a>
                         </li>
                     </ul>
@@ -71,7 +71,7 @@
                     <div class="none">
                         <form action="{{ route('results') }}" method="get" class="flex">
                             <input type="text" name="subject" class="text-gray-800"
-                                placeholder="INTF Liste manuscript name" value="{{ request()->subject }}">
+                                placeholder="" value="{{ request()->subject }}">
                             <button type="submit">Search</button>
                         </form>
                     </div>

@@ -21,7 +21,7 @@ Route::get('/', [ManuscriptController::class, 'index'])->name('home');
 Route::get('/about', function () {
     return view('about');
 })->name('about');
-Route::get('/search', [ManuscriptController::class, 'search'])->name('search');
+Route::get('/vl1', [ManuscriptController::class, 'vl1'])->name('vl1');
 Route::get('/results', [ManuscriptController::class, 'results'])->name('results');
 Route::get('/manuscript/{manuscriptName}', [ManuscriptController::class, 'show'])->name('manuscript.show');
 Route::get('/manuscript/{manuscriptName}/page/{number}', [ManuscriptController::class, 'showPage'])->name('manuscript.show.page');

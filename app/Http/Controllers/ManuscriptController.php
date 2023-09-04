@@ -65,6 +65,11 @@ class ManuscriptController extends Controller
         return view('search', $data);
     }
 
+    public function vl1(): View
+    {
+        return view('vl1');
+    }
+
     public function results(Request $request): View
     {
         $manuscripts = Manuscript::where('published', 1)

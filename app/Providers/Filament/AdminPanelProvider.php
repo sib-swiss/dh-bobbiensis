@@ -56,6 +56,6 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->profile(EditProfile::class);
-            
+
     }
 }
