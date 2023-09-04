@@ -9,7 +9,9 @@
                 <div class="flex items-center justify-between">
                     <a href="{{ route('home') }}"
                         class="mr-4 block cursor-pointer py-1.5 text-md font-normal leading-normal text-inherit antialiased">
-                        <img src="{{ Vite::asset('resources/images/logo-manuscript.png') }}" class="w-64 mr-4" alt="homepage">
+                        Codex<br>
+                        Bobbiensis
+                        <small><br>SIB Swiss Institute of Bioinformatics</small>
                     </a>
                     <ul class="hidden items-center gap-6 lg:flex">
                         <li class="block p-1 text-md font-normal leading-normal text-inherit antialiased">
@@ -51,6 +53,16 @@
             <div class="block h-0 w-full basis-full overflow-hidden text-white transition-all duration-300 ease-in lg:hidden"
                 data-collapse="navbar">{{-- not format this line otherwise cllapse will not work!! --}}<div class="container mx-auto pb-2">
                     <ul class="mt-2 mb-4 flex flex-col gap-2">
+
+                        <li class="block p-1 text-sm font-normal leading-normal text-inherit antialiased">
+                            <a class="flex items-center" href="{{ route('home') }}">
+                                Codex<br>
+                                Bobbiensis
+                                <small><br>SIB Swiss Institute of Bioinformatics</small>
+                            </a>
+                        </li>
+
+
                         <li class="block p-1 text-sm font-normal leading-normal text-inherit antialiased">
                             <a class="flex items-center" href="{{ route('home') }}">
                                 About
@@ -70,8 +82,8 @@
 
                     <div class="none">
                         <form action="{{ route('results') }}" method="get" class="flex">
-                            <input type="text" name="subject" class="text-gray-800"
-                                placeholder="" value="{{ request()->subject }}">
+                            <input type="text" name="subject" class="text-gray-800" placeholder=""
+                                value="{{ request()->subject }}">
                             <button type="submit">Search</button>
                         </form>
                     </div>
