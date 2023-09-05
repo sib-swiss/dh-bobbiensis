@@ -30,40 +30,26 @@
 
     <footer class="bg-[#4a74ac] mt-8 py-4">
         <div class="container mx-auto text-center">
-            <div class="flex">
-                <div class="w-1/4">
-                    <a href="https://ntvmr.uni-muenster.de/home" class="navlink" target="_blank">
-                        <img class="h-10 inline" src="{{ Vite::asset('resources/images/INTF_Logo_cmyk.jpg') }}"
-                            alt="INTF">
+            <div class="md:flex items-center">
+                <div class="md:w-1/4">
+                    <a href="https://bnuto.cultura.gov.it" class="navlink" target="_blank">
+                        <img class="h-16 inline"
+                            src="{{ Vite::asset('resources/images/biblioteca-nazionale-universita-di-torino.jpg') }}"
+                            alt="Biblioteca nazionale università di Torino">
                     </a>
                 </div>
-                <div class="w-1/4">
-                    <a href="http://www.snf.ch/" class="navlink" target="_blank">
-                        <img class="h-10 inline" src="{{ Vite::asset('resources/images/logo-SNF.png') }}" alt="SNF">
-                    </a>
-                </div>
-                <div class="w-1/4">
-                    <a href="https://github.com/sib-swiss/dh-mr-mark16" class="navlink" target="_blank">
+                <div class="md:w-1/2 py-6">
+                    <a href="#" class="navlink" target="_blank">
                         <img class="h-10 inline" src="{{ Vite::asset('resources/images/logo-GitHub-Mark-64px.png') }}"
                             alt="github">
                     </a>
                 </div>
-                <div class="w-1/4">
+                <div class="md:w-1/4">
                     <a href="https://sib.swiss" class="navlink" target="_blank">
-                        <img class="h-12 inline" src="{{ Vite::asset('resources/images/sib_logo_trans_background.png') }}"
+                        <img class="h-16 inline" src="{{ Vite::asset('resources/images/sib_logo2023.svg') }}"
                             alt="SIB">
                     </a>
                 </div>
-            </div>
-            <div class=" mt-4">
-
-                <a href="https://www.php.net/" class="navlink" target="_blank">
-                    <img class="inline" src="{{ Vite::asset('resources/images/php-power-micro2.png') }}" alt="Powered by PHP">
-                    <!-- <img src="resources/frontend/img/php-power-white.png" alt="Powered by PHP"> -->
-                </a>
-                -
-                <a class="text-white" href="/terms" class="text-light"><small>Terms of use</small></a>
-
             </div>
         </div>
     </footer>
