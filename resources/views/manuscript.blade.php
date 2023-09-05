@@ -4,7 +4,7 @@
     <div class="mx-2">
 
         <div class="p-5">
-            <h1 class="my-0 mb-3 pb-3 flex align-middle gap-2 border-b-2 border-gray-800 text-3xl">
+            <h1 class="my-0 mb-3 pb-3 flex items-center gap-2 border-b-2 border-gray-800 text-3xl">
                 <a href="javascript:location.reload()"
                     class="text-blue-800 hover:underline">{{ $manuscript->getDisplayname() }}</a>
                 <small>
@@ -25,12 +25,10 @@
                     </a>
                 @endforeach
 
-                <a class="btn btn-sm m-1 px-1 py-0" role="button" target="_blank"
-                    href="{{ $manuscript->getMeta('isVersionOf') }}">
-                    <div
-                        style="font-size: 12px !important; font-weight: 400 !important; color: rgb(74, 116, 172); background-color: rgba(0, 0, 0, 0);">
-                        <i class="fas fa-camera fa-2x"></i>
-                    </div>
+                <a href="https://bnuto.cultura.gov.it" target="_blank">
+                    <img class="h-16 inline"
+                        src="{{ Vite::asset('resources/images/biblioteca-nazionale-universita-di-torino.jpg') }}"
+                        alt="Biblioteca nazionale università di Torino">
                 </a>
 
             </h1>
@@ -38,10 +36,10 @@
             <div class="lg:flex justify-between pb-3  border-b border-black">
                 <div class="w-1/3">
                     <p>
-                        <dcterms:alternative>{{ $manuscript->getMeta('alternative') }}</dcterms:alternative>
+                        <dcterms:alternative>NT.VMR Doc ID 200001</dcterms:alternative>
                     </p>
                     <p><span class="show-metadata">Shelfmark: </span>
-                        <dcterms:isFormatOf>{{ $manuscript->getMeta('isFormatOf') }}</dcterms:isFormatOf>
+                        <dcterms:isFormatOf>G.VII.15</dcterms:isFormatOf>
                     </p>
                     <p><span class="show-metadata">Date: </span>
                         <dcterms:date xml:lang="en">{{ $manuscript->getMeta('date') }}</dcterms:date>
@@ -53,12 +51,6 @@
 
 
                 <div class="w-1/3">
-                    @if ($manuscript->getMeta('coverage'))
-                        <p>
-                            <dcterms:coverage>{{ $manuscript->getMeta('coverage') }}</dcterms:coverage>
-                        </p>
-                    @endif
-
                     <p>
                         <span class="show-metadata">
                             @if ('CSRPC' === $manuscript->name)
@@ -84,13 +76,16 @@
                         </p>
                     @endif
 
-                    <p>
-                        <span class="show-metadata">Nakala: </span>
-                        <a id="ddb-hybrid" class="btn_blue" role="button" target="_blank"
-                            href="{{ str_replace(['api.', 'datas/'], '', $manuscript->url) }}">
-                            metadata
-                        </a>
-                    </p>
+                    @if ($manuscript->url)
+                        <p>
+                            <span class="show-metadata">Nakala: </span>
+                            <a id="ddb-hybrid" class="btn_blue" role="button" target="_blank"
+                                href="{{ str_replace(['api.', 'datas/'], '', $manuscript->url) }}">
+                                metadata
+                            </a>
+                        </p>
+                    @endif
+
                     @if ($manuscript->getMeta('hasFormat'))
                         <p>
                             <span class="show-metadata">DaSCH: </span>
@@ -103,7 +98,7 @@
                 </div>
 
 
-                <div class="w-1/3">
+                <div class="">
                     <div class="flex justify-end">
 
                         <div>
@@ -112,7 +107,7 @@
                                 onClick="if(document.querySelector('[data-popover=\'menu_html\']').classList.contains('opacity-1')) {
                                             document.querySelector('[data-popover-target=\'menu_html\']').click()
                                         }">
-                                FOLIOS
+                                Folios PDF
                             </button>
                             <ul role="menu" data-popover="menu_folios" data-popover-placement="bottom-end"
                                 class="absolute z-50 min-w-[180px] overflow-auto rounded-md border border-blue-gray-50 bg-white p-3 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none">
@@ -134,7 +129,7 @@
                                 onClick="if(document.querySelector('[data-popover=\'menu_folios\']').classList.contains('opacity-1')) {
                                     document.querySelector('[data-popover-target=\'menu_folios\']').click()
                                 }">
-                                HTML
+                                Folios TEI/XML
                             </button>
                             <ul role="menu" data-popover="menu_html" data-popover-placement="bottom-start"
                                 class="absolute z-50 min-w-[180px] overflow-auto rounded-md border border-blue-gray-50 bg-white p-3 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none">
@@ -150,26 +145,20 @@
                         </div>
 
 
-                        <a class="btn_blue" role="button" target="_blank"
-                            href="{{ $manuscript->getMeta('isReferencedBy') }}">
-                            Bibliography
-                        </a>
-
-
-
-                        <button data-ripple-light="true" data-dialog-target="dialog" class="btn_blue">
-                            Abstract
-                        </button>
 
 
 
                         <div class="opacity-0"></div>
                     </div>
 
-                    <div>
-                        <a href='/mirador-annotations/?manuscript={{ $manuscript->name }}' target="edit-annotations">EDIT
-                            ANNOTATIONS</a>
-                    </div>
+
+                    @auth
+                        <div class="pt-6 pl-2">
+                            <a href='/mirador-annotations/?manuscript={{ $manuscript->name }}' target="edit-annotations">EDIT
+                                ANNOTATIONS</a>
+                        </div>
+                    @endauth
+
                 </div>
 
             </div>
@@ -185,28 +174,6 @@
 
                     <div id="mirador"></div>
 
-                </div>
-            </div>
-        </div>
-
-
-
-        <div data-dialog-backdrop="dialog" data-dialog-backdrop-close="true"
-            class="pointer-events-none fixed inset-0 z-[9999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 opacity-0 backdrop-blur-sm transition-opacity duration-300">
-            <div data-dialog="dialog"
-                class="relative m-4  min-w-[40%] max-w-[80%] rounded-lg bg-white font-sans text-base  leading-relaxed  antialiased shadow-2xl">
-                <div
-                    class="flex shrink-0 items-center p-4 font-sans text-2xl font-semibold leading-snug text-blue-gray-900 antialiased">
-                    Abstract
-                </div>
-                <div
-                    class="relative border-t border-b border-t-blue-gray-100 border-b-blue-gray-100 p-4 font-sans text-base leading-relaxed  antialiased">
-                    {{ $manuscript->getMeta('abstract') }}
-                </div>
-                <div class="flex shrink-0 flex-wrap items-center justify-end p-4 ">
-                    <button data-ripple-dark="true" data-dialog-close="true" class="btn_blue">
-                        Close
-                    </button>
                 </div>
             </div>
         </div>

@@ -137,7 +137,7 @@ class Manuscript extends Model implements HasMedia
     {
         $content = is_array($this->content) ? $this->content : json_decode((string) $this->content, true);
         if (! $this->url) {
-            return isset($content[$key]) ? $content[$key] : 'NA';
+            return isset($content[$key]) ? $content[$key] : '';
         }
 
         return Nakala::getMeta($content, $key);
