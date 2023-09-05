@@ -83,6 +83,10 @@
     "file": "assets/logo-INTF-2fff2a28.jpg",
     "src": "resources/images/logo-INTF.jpg"
   },
+  "resources/images/biblioteca-nazionale-universita-di-torino.jpg": {
+    "file": "assets/biblioteca-nazionale-universita-di-torino-c34d10a7.jpg",
+    "src": "resources/images/biblioteca-nazionale-universita-di-torino.jpg"
+  },
   "resources/images/logo-GitHub-Mark-64px.png": {
     "file": "assets/logo-GitHub-Mark-64px-22ed95ff.png",
     "src": "resources/images/logo-GitHub-Mark-64px.png"
@@ -125,7 +129,7 @@
     "src": "resources/js/app.js"
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-29a43e74.css",
+    "file": "assets/app-2ea566aa.css",
     "isEntry": true,
     "src": "resources/sass/app.scss"
   }
