@@ -5,7 +5,7 @@
         <h1>VL 1</h1>
         
         <p>
-            Text for VL 1
+            [TBC]
         </p>
     </div>
 @endsection
