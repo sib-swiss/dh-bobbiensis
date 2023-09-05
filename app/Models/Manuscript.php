@@ -130,7 +130,7 @@ class Manuscript extends Model implements HasMedia
 
     public function getDisplayname(): string
     {
-        return $this->getMeta('bibliographicCitation') !== 'NA' ? $this->getMeta('bibliographicCitation') : $this->name;
+        return $this->getMeta('bibliographicCitation') ?: $this->name;
     }
 
     public function getMeta(string $key): ?string

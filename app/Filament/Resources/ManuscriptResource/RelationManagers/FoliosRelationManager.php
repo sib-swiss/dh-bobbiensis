@@ -10,6 +10,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class FoliosRelationManager extends RelationManager
 {
@@ -25,6 +26,12 @@ class FoliosRelationManager extends RelationManager
             SpatieMediaLibraryFileUpload::make('image'),
             Forms\Components\Textarea::make('copyright'),
             Forms\Components\TextInput::make('fontsize'),
+            SpatieMediaLibraryFileUpload::make('attachment')
+                ->collection('pdf')
+                ->label('PDF')
+                ->acceptedFileTypes([
+                    'application/pdf',
+                ]),
         ]);
     }
 
@@ -41,10 +48,26 @@ class FoliosRelationManager extends RelationManager
                         $mediaItem = $record->getFirstMedia();
                         if ($mediaItem) {
                             $imageUrl = "/iiif/{$mediaItem->id}/full/65,/0/default.jpg";
-                            $imageUrlFull = "/iiif/{$mediaItem->id}/full/full,/0/default.jpg";
+                            $image = Image::make($mediaItem->getPath());
+                            $imageUrlFull = "/iiif/{$mediaItem->id}/full/{$image->width()},/0/default.jpg";
                             $html .= '<a href="'.url($imageUrlFull).'" target="_blank">
                                 <img src="'.url($imageUrl).'" alt="'.$record->name.'" width="100" height="100">
                             </a>';
+                        }
+
+                        return $html;
+                    }),
+
+                Tables\Columns\TextColumn::make('pdf')
+                    ->html()
+                    ->label('PDF')
+                    ->getStateUsing(function (ManuscriptContentMeta $record): string {
+                        $html = '';
+                        $mediaItem = $record->getFirstMedia('pdf');
+                        if ($mediaItem) {
+                            $html .= '<a href="'.$mediaItem->getUrl().'" target="_blank">
+                                    PDF
+                                </a>';
                         }
 
                         return $html;
@@ -125,7 +148,7 @@ class FoliosRelationManager extends RelationManager
                             $filePath = 'images/'.$mediaItem->id.'_'.$mediaItem->file_name;
                             $storage = Storage::disk('public');
                             if ($storage->exists($filePath)) {
-                                return $storage->delete($filePath);
+                                $storage->delete($filePath);
                             }
                         }
 

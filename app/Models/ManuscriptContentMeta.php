@@ -150,7 +150,7 @@ class ManuscriptContentMeta extends ManuscriptContent implements HasMedia
     {
 
         $items = [];
-        foreach ($this->media as $media) {
+        foreach ($this->getMedia('default') as $media) {
             $getimagesize = getimagesize($media->getPath());
             $items[] = [
                 'id' => url("/iiif/{$this->manuscript->name}/canvas/p{$this->pageNumber}/annopage-1/anno-1"), //"https://iiif.io/api/cookbook/recipe/0009-book-1/annotation/p0001-image",
