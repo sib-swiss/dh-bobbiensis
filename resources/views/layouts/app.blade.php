@@ -1,32 +1,36 @@
 @extends('layouts.base')
 
 @section('body')
-    <nav
-        class="mx-auto block w-full border border-white/80 bg-[#4a74ac] py-2 px-4 text-white shadow-md backdrop-blur-2xl backdrop-saturate-200 lg:px-8 lg:py-2">
+    <nav id="topmenu">
         <div>
             <div class="flex items-center justify-between text-white">
 
-                <div class="flex items-center justify-between">
-                    <a href="{{ route('home') }}"
-                        class="mr-4 block cursor-pointer py-1.5 text-md font-normal leading-normal text-inherit antialiased">
-                        Codex<br>
-                        Bobbiensis
-                        <small><br>SIB Swiss Institute of Bioinformatics</small>
-                    </a>
-                    <ul class="hidden items-center gap-6 lg:flex">
+                <div class="flex items-center justify-between grow">
+                    <div>
+                        <a href="{{ route('home') }}"
+                            class="mr-4 block cursor-pointer py-1.5 text-md font-normal leading-normal text-inherit antialiased">
+                            Codex Bobbiensis
+                        </a>
+                        <small>
+                            <a href="https://bnuto.cultura.gov.it/" target="_blank">Biblioteca
+                                Nazionale di Torino</a>
+                            <br>
+                            <a href="https://sib.swiss" target="_blank">SIB Swiss
+                                Institute of Bioinformatics</a>
+
+                        </small>
+
+                    </div>
+
+                    <ul class="hidden items-center justify-center grow gap-6 lg:flex">
                         <li class="block p-1 text-md font-normal leading-normal text-inherit antialiased">
-                            <a class="flex items-center text-white hover:text-black" href="{{ route('about') }}">
-                                About
+                            <a class="flex items-centerk" href="{{ route('vl1') }}">
+                                About VL 1
                             </a>
                         </li>
                         <li class="block p-1 text-md font-normal leading-normal text-inherit antialiased">
-                            <a class="flex items-center text-white hover:text-black" href="{{ route('home') }}">
+                            <a class="flex items-center " href="{{ route('home') }}">
                                 Content
-                            </a>
-                        </li>
-                        <li class="block p-1 text-md font-normal leading-normal text-inherit antialiased">
-                            <a class="flex items-center text-white hover:text-black" href="{{ route('vl1') }}">
-                                VL 1
                             </a>
                         </li>
                     </ul>
@@ -50,32 +54,20 @@
                     </span>
                 </button>
             </div>
+
             <div class="block h-0 w-full basis-full overflow-hidden text-white transition-all duration-300 ease-in lg:hidden"
                 data-collapse="navbar">{{-- not format this line otherwise cllapse will not work!! --}}<div class="container mx-auto pb-2">
                     <ul class="mt-2 mb-4 flex flex-col gap-2">
 
                         <li class="block p-1 text-sm font-normal leading-normal text-inherit antialiased">
-                            <a class="flex items-center" href="{{ route('home') }}">
-                                Codex<br>
-                                Bobbiensis
-                                <small><br>SIB Swiss Institute of Bioinformatics</small>
+                            <a class="flex items-center" href="{{ route('vl1') }}">
+                                About VL 1
                             </a>
                         </li>
 
-
-                        <li class="block p-1 text-sm font-normal leading-normal text-inherit antialiased">
-                            <a class="flex items-center" href="{{ route('home') }}">
-                                About
-                            </a>
-                        </li>
                         <li class="block p-1 text-sm font-normal leading-normal text-inherit antialiased">
                             <a class="flex items-center" href="{{ route('home') }}">
                                 Content
-                            </a>
-                        </li>
-                        <li class="block p-1 text-sm font-normal leading-normal text-inherit antialiased">
-                            <a class="flex items-center" href="{{ route('vl1') }}">
-                                VL 1
                             </a>
                         </li>
                     </ul>
