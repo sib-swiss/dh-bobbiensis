@@ -26,11 +26,18 @@ class FoliosRelationManager extends RelationManager
             SpatieMediaLibraryFileUpload::make('image'),
             Forms\Components\Textarea::make('copyright'),
             Forms\Components\TextInput::make('fontsize'),
-            SpatieMediaLibraryFileUpload::make('attachment')
+            SpatieMediaLibraryFileUpload::make('attachment_pdf')
                 ->collection('pdf')
                 ->label('PDF')
                 ->acceptedFileTypes([
                     'application/pdf',
+                ]),
+            SpatieMediaLibraryFileUpload::make('attachment_tei')
+                ->collection('tei')
+                ->label('TEI/XML')
+                ->acceptedFileTypes([
+                    'application/xml',
+                    'text/xml',
                 ]),
         ]);
     }
@@ -73,6 +80,20 @@ class FoliosRelationManager extends RelationManager
                         return $html;
                     }),
 
+                Tables\Columns\TextColumn::make('tei')
+                    ->html()
+                    ->label('TEI/XML')
+                    ->getStateUsing(function (ManuscriptContentMeta $record): string {
+                        $html = '';
+                        $mediaItem = $record->getFirstMedia('tei');
+                        if ($mediaItem) {
+                            $html .= '<a href="'.$mediaItem->getUrl().'" target="_blank">
+                            TEI/XML
+                                </a>';
+                        }
+
+                        return $html;
+                    }),
                 Tables\Columns\TextColumn::make('copyright Text')
                     ->html()
                     ->wrap()
