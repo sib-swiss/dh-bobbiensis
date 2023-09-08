@@ -177,7 +177,7 @@ class ManuscriptContentMeta extends ManuscriptContent implements HasMedia
         $canvas = [
             'id' => url("/iiif/{$this->manuscript->name}/canvas/p{$this->pageNumber}"),
             'type' => 'Canvas',
-            'label' => ['none' => [substr($this->name, 0, -4)]],
+            'label' => ['none' => [$this->name]],
             'height' => isset($getimagesize[1]) ? $getimagesize[1] : 100,
             'width' => isset($getimagesize[0]) ? $getimagesize[0] : 100,
             'items' => [
