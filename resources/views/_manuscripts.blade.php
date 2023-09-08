@@ -6,15 +6,14 @@
         <tr>
             <th>#</th>
             <th>Image</th>
-            <th>Details</th>
-            <th>Abstract</th>
+            <th>Folios</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($manuscripts as $manuscript)
             <tr>
                 <td><span
-                        class="bg-gray-600 text-white rounded px-2 py-1 font-bold">{{ $manuscript->getMeta('temporal') }}</span>
+                        class="bg-gray-600 text-white rounded px-2 py-1 font-bold">{{ $manuscript->temporal }}</span>
                 </td>
                 <td>
                     @if ($manuscript->folios->first() && $manuscript->folios->first()->getFirstMedia())
@@ -27,7 +26,7 @@
                         href="{{ route('manuscript.show', $manuscript->name) }}">{{ $manuscript->getDisplayname() }}</a>
                     <p class="text-gray-800 whitespace-nowrap">
                         <span>
-                            <dcterms:isformatof>{{ $manuscript->getMeta('isFormatOf') }}</dcterms:isformatof>
+                            <dcterms:isformatof>G.VII.15</dcterms:isformatof>
                         </span><br>
                         <span>
                             <dcterms:language xml:lang="en">{{ $manuscript->getLangExtended() }}</dcterms:language>
@@ -36,9 +35,6 @@
                             <dcterms:date xml:lang="en">{{ $manuscript->getMeta('date') }}</dcterms:date>
                         </span><br>
                     </p>
-                </td>
-                <td class="abstract">
-                    {{ $manuscript->getMeta('abstract') }}
                 </td>
             </tr>
         @endforeach
