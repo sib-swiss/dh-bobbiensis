@@ -53,11 +53,7 @@
                 <div class="w-1/3">
                     <p>
                         <span class="show-metadata">
-                            @if ('CSRPC' === $manuscript->name)
-                                Transliteration:
-                            @else
-                                Transcription:
-                            @endif
+                            Author(s):
                         </span>
 
                         @foreach ($manuscript->getMetas('creator') as $creator)
@@ -95,6 +91,13 @@
                         </p>
                     @endif
 
+
+                    {{-- @auth --}}
+                        <div class="pt-6">
+                            <a href='/mirador-annotations/?manuscript={{ $manuscript->name }}' target="edit-annotations">EDIT
+                                ANNOTATIONS</a>
+                        </div>
+                    {{-- @endauth --}}
                 </div>
 
 
@@ -166,14 +169,7 @@
 
                         <div class="opacity-0"></div>
                     </div>
-
-
-                    @auth
-                        <div class="pt-6 pl-2">
-                            <a href='/mirador-annotations/?manuscript={{ $manuscript->name }}' target="edit-annotations">EDIT
-                                ANNOTATIONS</a>
-                        </div>
-                    @endauth
+                    
 
                 </div>
 

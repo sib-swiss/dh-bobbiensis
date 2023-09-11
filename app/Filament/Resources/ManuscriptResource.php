@@ -78,34 +78,39 @@ class ManuscriptResource extends Resource
 
                         return $html;
                     }),
-                Tables\Columns\IconColumn::make('published')->boolean()
-                    ->sortable(),
+                    Tables\Columns\IconColumn::make('published')->boolean()
+                        ->sortable(),
+                    Tables\Columns\TextColumn::make('author(s)')
+                        ->html()
+                        ->getStateUsing(function (Manuscript $record): string {
+                            return 'ToDo';
+                        }),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\Action::make('Nakala')
-                    ->disabled(fn (Manuscript $record) => ! $record->url)
-                    ->tooltip(fn (Manuscript $record) => $record->url ? 'Sync from Nakala' : 'No Nakala URL')
-                    ->action(function (Manuscript $record) {
-                        $syncFromNakala = $record->syncFromNakala();
-                        if (isset($syncFromNakala['version'])) {
-                            Notification::make()
-                                ->title('Updated manuscript '.$record->getDisplayname().' to revision '.$syncFromNakala['version'])
-                                ->success()
-                                ->send();
-                        } else {
-                            Notification::make()
-                                ->title('ERROR while try to syunc manuscript '.$record->getDisplayname())
-                                ->danger()
-                                ->send();
-                        }
+                // Tables\Actions\Action::make('Nakala')
+                //     ->disabled(fn (Manuscript $record) => ! $record->url)
+                //     ->tooltip(fn (Manuscript $record) => $record->url ? 'Sync from Nakala' : 'No Nakala URL')
+                //     ->action(function (Manuscript $record) {
+                //         $syncFromNakala = $record->syncFromNakala();
+                //         if (isset($syncFromNakala['version'])) {
+                //             Notification::make()
+                //                 ->title('Updated manuscript '.$record->getDisplayname().' to revision '.$syncFromNakala['version'])
+                //                 ->success()
+                //                 ->send();
+                //         } else {
+                //             Notification::make()
+                //                 ->title('ERROR while try to syunc manuscript '.$record->getDisplayname())
+                //                 ->danger()
+                //                 ->send();
+                //         }
 
-                    })
-                    // ->requiresConfirmation()
-                    ->icon('heroicon-o-arrow-path')
-                    ->color('success'),
+                //     })
+                //     // ->requiresConfirmation()
+                //     ->icon('heroicon-o-arrow-path')
+                //     ->color('success'),
 
                 Tables\Actions\EditAction::make(),
             ])
