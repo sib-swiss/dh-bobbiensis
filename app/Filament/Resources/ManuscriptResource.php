@@ -23,10 +23,13 @@ class ManuscriptResource extends Resource
     {
         return $form->schema([
             Forms\Components\TextInput::make('temporal'),
-            Forms\Components\TextInput::make('name'),
-            Forms\Components\TextInput::make('url')
-                ->label('Nakala URL')
-                ->unique('manuscripts', 'url', ignoreRecord: true),
+            Forms\Components\TextInput::make('name')
+                ->required()
+                ->unique('manuscripts', 'name', ignoreRecord: true)
+                ,
+            // Forms\Components\TextInput::make('url')
+            //     ->label('Nakala URL')
+            //     ->unique('manuscripts', 'url', ignoreRecord: true),
             Forms\Components\Toggle::make('published'),
         ]);
     }
