@@ -125,7 +125,7 @@ a {
 }
 
 #topmenu {
-    @apply mx-auto block w-full border border-white/80 bg-[#4a74ac] py-2 px-4 text-white shadow-md backdrop-blur-2xl backdrop-saturate-200 lg:px-8 lg:py-2;
+    @apply container mx-auto block w-full py-2 px-4 text-white lg:px-8 lg:py-2;
     & a {
         @apply text-white hover:text-black;
     }

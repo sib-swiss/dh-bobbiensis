@@ -15,15 +15,15 @@ class ManuscriptControllerTest extends TestCase
      */
     public function test_list_published_manuscripts(): void
     {
-        $url = 'https://api.nakala.fr/datas/11280/4242f209';
-        $manuscript = Manuscript::syncFromNakalaUrl($url);
+
+        $manuscript = Manuscript::factory()->create(['published' => 0]);
 
         $this->get('/')
             ->assertStatus(200)
-            ->assertDontSee('GA019');
+            ->assertDontSee($manuscript->name);
 
         $manuscript->update(['published' => 1]);
         $this->get('/')
-            ->assertSee('GA019');
+            ->assertSee($manuscript->name);
     }
 }

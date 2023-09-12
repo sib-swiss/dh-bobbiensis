@@ -1,39 +1,50 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-2">
+    <div class="container px-2  mx-auto ">
 
-        <div class="p-5">
-            <h1 class="my-0 mb-3 pb-3 flex items-center gap-2 border-b-2 border-gray-800 text-3xl">
-                <a href="javascript:location.reload()"
-                    class="text-blue-800 hover:underline">{{ $manuscript->getDisplayname() }}</a>
-                <small>
-                    @if ('CSRPC' === $manuscript->name)
-                        Printed edition ©
-                    @else
-                        Images ©
-                    @endif
-                </small>
-                </a>
-
-
-                @foreach ($manuscript->getMedia('partners') as $partner)
-                    <a href="{{ $partner->getCustomProperty('url') ? $partner->getCustomProperty('url') : '#' }}"
-                        style="text-decoration: none;" target="_blank">
-                        <img src="{{ $partner->getUrl() }}" alt="{{ $manuscript->getMeta('provenance') }}"
-                            style="max-width: 150px; max-height: 150px;">
+        <div class="">
+            <div class="lg:flex justify-between items-center mb-3 border-b border-gray-800">
+                <h1 class="my-0 md:flex items-center gap-2 text-3xl py-3">
+                    <a href="javascript:location.reload()"
+                        class="text-blue-800 hover:underline">{{ $manuscript->getDisplayname() }}</a>
+                    <small>
+                        @if ('CSRPC' === $manuscript->name)
+                            Printed edition ©
+                        @else
+                            Images ©
+                        @endif
+                    </small>
                     </a>
-                @endforeach
 
-                <a href="https://bnuto.cultura.gov.it" target="_blank">
-                    <img class="h-16 inline"
-                        src="{{ Vite::asset('resources/images/biblioteca-nazionale-universita-di-torino.jpg') }}"
-                        alt="Biblioteca nazionale università di Torino">
-                </a>
 
-            </h1>
+                    @foreach ($manuscript->getMedia('partners') as $partner)
+                        <a href="{{ $partner->getCustomProperty('url') ? $partner->getCustomProperty('url') : '#' }}"
+                            style="text-decoration: none;" target="_blank">
+                            <img src="{{ $partner->getUrl() }}" alt="{{ $manuscript->getMeta('provenance') }}"
+                                style="max-width: 150px; max-height: 150px;">
+                        </a>
+                    @endforeach
 
-            <div class="lg:flex justify-between pb-3  border-b border-black">
+                    <a href="https://bnuto.cultura.gov.it" target="_blank">
+                        <img class="h-16 inline"
+                            src="{{ Vite::asset('resources/images/biblioteca-nazionale-universita-di-torino.jpg') }}"
+                            alt="Biblioteca nazionale università di Torino">
+                    </a>
+
+
+
+                </h1>
+
+                @auth
+                    <div>
+                        <a href='/mirador-annotations/?manuscript={{ $manuscript->name }}' target="edit-annotations">EDIT
+                            ANNOTATIONS</a>
+                    </div>
+                @endauth
+            </div>
+
+            <div class="lg:flex justify-between pb-3">
                 <div class="w-1/3">
                     <p>
                         <dcterms:alternative>NT.VMR Doc ID 200001</dcterms:alternative>
@@ -55,13 +66,7 @@
                         <span class="show-metadata">
                             Author(s):
                         </span>
-
-                        @foreach ($manuscript->getMetas('creator') as $creator)
-                            <dcterms:creator>{{ $creator['value']['fullName'] }}</dcterms:creator>
-                            @if (!$loop->last)
-                                ,
-                            @endif
-                        @endforeach
+                        <dcterms:creator>{{ $manuscript->authors }}</dcterms:creator>
                     </p>
 
                     @if ($manuscript->getMeta('contributor'))
@@ -72,32 +77,24 @@
                         </p>
                     @endif
 
-                    @if ($manuscript->url)
+                    @if ($manuscript->nakala_url)
                         <p>
                             <span class="show-metadata">Nakala: </span>
-                            <a id="ddb-hybrid" class="btn_blue" role="button" target="_blank"
-                                href="{{ str_replace(['api.', 'datas/'], '', $manuscript->url) }}">
-                                metadata
+                            <a target="_blank" href="{{ $manuscript->nakala_url }}">
+                                {{ $manuscript->nakala_url }}
                             </a>
                         </p>
                     @endif
 
-                    @if ($manuscript->getMeta('hasFormat'))
+                    @if ($manuscript->dasch_url)
                         <p>
                             <span class="show-metadata">DaSCH: </span>
-                            <a class="btn_blue" role="button" target="_blank" href="{!! $manuscript->getMeta('hasFormat') !!}">
-                                metadata
+                            <a target="_blank" href="{{ $manuscript->dasch_url }}">
+                                {{ $manuscript->dasch_url }}
                             </a>
                         </p>
                     @endif
 
-
-                    {{-- @auth --}}
-                        <div class="pt-6">
-                            <a href='/mirador-annotations/?manuscript={{ $manuscript->name }}' target="edit-annotations">EDIT
-                                ANNOTATIONS</a>
-                        </div>
-                    {{-- @endauth --}}
                 </div>
 
 
@@ -169,8 +166,6 @@
 
                         <div class="opacity-0"></div>
                     </div>
-                    
-
                 </div>
 
             </div>

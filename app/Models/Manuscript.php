@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-use App\Nakala;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Http;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -23,68 +21,10 @@ class Manuscript extends Model implements HasMedia
         'content' => 'array',
     ];
 
-    public function syncFromNakala(): array
-    {
-        $manuscript = $this->syncFromNakalaUrl($this->url);
-        if (! $manuscript) {
-            dd($manuscript);
-        }
-
-        return ['version' => $manuscript->content['version']];
-
-    }
-
     public function partners()
     {
         return $this->morphMany(config('media-library.media_model'), 'model')
             ->where('collection_name', 'partners');
-    }
-
-    public static function syncFromNakalaUrl(string $url = null): ?Manuscript
-    {
-        if (! $url) {
-            return $url;
-        }
-
-        $jsonContent = Http::get($url)->json();
-        // dd($jsonContent);
-        $manuscriptName = strtoupper(str_replace(' ', '', Nakala::getMeta($jsonContent, 'bibliographicCitation')));
-        $manuscript = self::firstWhere('name', $manuscriptName);
-        if ($manuscript) {
-            $manuscript->update([
-                'url' => $url,
-                'content' => $jsonContent,
-                'temporal' => Nakala::getMeta($jsonContent, 'temporal'),
-            ]);
-        } else {
-            $manuscript = self::create([
-                'name' => $manuscriptName,
-                'url' => $url,
-                'content' => $jsonContent,
-                'temporal' => Nakala::getMeta($jsonContent, 'temporal'),
-            ]);
-        }
-
-        $contentNames = [];
-        foreach ($jsonContent['files'] as $nakalaFileData) {
-            $nakala_parsed_url = parse_url($manuscript->url); // ex. 'https://api.nakala.fr/datas/10.34847/nkl.6f83096n'
-            $nakala_download_url = $nakala_parsed_url['scheme'].'://'.$nakala_parsed_url['host'].str_replace('datas', 'data', $nakala_parsed_url['path']);
-            $url = $nakala_download_url.'/'.$nakalaFileData['sha1'];
-            $contentNames[] = $nakalaFileData['name'];
-
-            $manuscriptContent = ManuscriptContent::updateOrCreate(
-                ['manuscript_id' => $manuscript->id, 'name' => $nakalaFileData['name']],
-                [
-                    'extension' => strtolower($nakalaFileData['extension']),
-                    'url' => $url,
-                    'content' => file_get_contents($url),
-                ]
-            );
-        }
-
-        $manuscript->folios()->whereNotIn('name', $contentNames)->get()->each->delete();
-
-        return $manuscript;
     }
 
     /**
@@ -140,13 +80,12 @@ class Manuscript extends Model implements HasMedia
             return '380-420 CE';
         }
 
-
         $content = is_array($this->content) ? $this->content : json_decode((string) $this->content, true);
-        if (! $this->url) {
-            return isset($content[$key]) ? $content[$key] : '';
-        }
 
-        return Nakala::getMeta($content, $key);
+        return isset($content[$key])
+        ? $content[$key]
+        : '';
+
     }
 
     public function getLangExtended(): string
@@ -194,9 +133,10 @@ class Manuscript extends Model implements HasMedia
             return collect([]);
         }
 
-        $content = is_array($this->content) ? $this->content : json_decode((string) $this->content, true);
+        return collect(is_array($this->content)
+            ? $this->content
+            : json_decode((string) $this->content, true));
 
-        return Nakala::getMetas($content, $key);
     }
 
     // * https://iiif.io/api/presentation/3.0/#52-manifest

@@ -17,7 +17,12 @@ class ManuscriptFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'temporal' => $this->faker->word,
+            'nakala_url' => $this->faker->url,
+            'dasch_url' => $this->faker->url,
+            'authors' => $this->faker->word,
+            'published' => $this->faker->boolean,
         ];
     }
 }

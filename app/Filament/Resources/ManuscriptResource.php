@@ -8,7 +8,6 @@ use App\Filament\Resources\ManuscriptResource\RelationManagers\PartnersRelationM
 use App\Models\Manuscript;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -25,11 +24,13 @@ class ManuscriptResource extends Resource
             Forms\Components\TextInput::make('temporal'),
             Forms\Components\TextInput::make('name')
                 ->required()
-                ->unique('manuscripts', 'name', ignoreRecord: true)
-                ,
-            // Forms\Components\TextInput::make('url')
-            //     ->label('Nakala URL')
-            //     ->unique('manuscripts', 'url', ignoreRecord: true),
+                ->unique('manuscripts', 'name', ignoreRecord: true),
+            Forms\Components\TextInput::make('authors'),
+            Forms\Components\TextInput::make('nakala_url')
+                ->label('Nakala URL'),
+            Forms\Components\TextInput::make('dasch_url')
+                ->label('DaSCH URL'),
+
             Forms\Components\Toggle::make('published'),
         ]);
     }
@@ -57,69 +58,31 @@ class ManuscriptResource extends Resource
                             if ($mediaItem) {
                                 $imageUrl = "/iiif/{$mediaItem->id}/full/65,/0/default.jpg";
                                 $imageUrlFull = "/iiif/{$mediaItem->id}/full/max,/0/default.jpg";
-                                $html .= '<div>
-                                    <a href="'.url($imageUrlFull).'" target="_blank">
-                                        <img src="'.url($imageUrl).'" alt="'.$folio->name.'" class="max-w-none">
-                                    </a>
-                                </div>';
+                                $html .= '<a href="'.url($imageUrlFull).'" class="inline-block"  target="_blank">
+                                        <img src="'.url($imageUrl).'" alt="'.$folio->name.'" class="max-w-none" />
+                                    </a> ';
                             }
 
                         }
 
                         return $html;
                     }),
-                Tables\Columns\TextColumn::make('partners')
-                    ->html()
-                    ->getStateUsing(function (Manuscript $record): string {
-                        $html = '';
-                        foreach ($record->getMedia('partners') as $partner) {
-                            $imageUrl = "/iiif/{$partner->id}/full/,72/0/default.jpg";
-                            $html .= '<a href="'.($partner->getCustomProperty('url') ?: '#').'" target="_blank">
-                                <img src="'.url($imageUrl).'" alt="'.$partner->name.'" class="max-w-none">
-                            </a>';
-                        }
-
-                        return $html;
-                    }),
-                    Tables\Columns\IconColumn::make('published')->boolean()
-                        ->sortable(),
-                    Tables\Columns\TextColumn::make('author(s)')
-                        ->html()
-                        ->getStateUsing(function (Manuscript $record): string {
-                            return 'ToDo';
-                        }),
+                Tables\Columns\IconColumn::make('published')->boolean()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('authors')
+                    ->label('Author(s)')
+                    ->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                // Tables\Actions\Action::make('Nakala')
-                //     ->disabled(fn (Manuscript $record) => ! $record->url)
-                //     ->tooltip(fn (Manuscript $record) => $record->url ? 'Sync from Nakala' : 'No Nakala URL')
-                //     ->action(function (Manuscript $record) {
-                //         $syncFromNakala = $record->syncFromNakala();
-                //         if (isset($syncFromNakala['version'])) {
-                //             Notification::make()
-                //                 ->title('Updated manuscript '.$record->getDisplayname().' to revision '.$syncFromNakala['version'])
-                //                 ->success()
-                //                 ->send();
-                //         } else {
-                //             Notification::make()
-                //                 ->title('ERROR while try to syunc manuscript '.$record->getDisplayname())
-                //                 ->danger()
-                //                 ->send();
-                //         }
-
-                //     })
-                //     // ->requiresConfirmation()
-                //     ->icon('heroicon-o-arrow-path')
-                //     ->color('success'),
-
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-            ]);
+            ])
+            ->defaultSort('temporal', 'asc');
     }
 
     public static function getRelations(): array
