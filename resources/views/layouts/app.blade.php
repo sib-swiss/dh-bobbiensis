@@ -14,7 +14,7 @@
                             </a>
                             <small>
                                 <a href="https://bnuto.cultura.gov.it/" target="_blank">Biblioteca
-                                    Nazionale di Torino</a>
+                                    Nazionale Universitaria di Torino</a>
                                 <br>
                                 <a href="https://sib.swiss" target="_blank">SIB Swiss
                                     Institute of Bioinformatics</a>

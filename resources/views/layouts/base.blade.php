@@ -35,7 +35,7 @@
                     <a href="https://bnuto.cultura.gov.it" class="navlink" target="_blank">
                         <img class="h-16 inline"
                             src="{{ Vite::asset('resources/images/biblioteca-nazionale-universita-di-torino.jpg') }}"
-                            alt="Biblioteca nazionale università di Torino">
+                            alt="Biblioteca nazionale Universitaria di Torino">
                     </a>
                 </div>
                 <div class="md:w-1/2 py-6">

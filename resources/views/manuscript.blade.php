@@ -29,7 +29,7 @@
                     <a href="https://bnuto.cultura.gov.it" target="_blank">
                         <img class="h-16 inline"
                             src="{{ Vite::asset('resources/images/biblioteca-nazionale-universita-di-torino.jpg') }}"
-                            alt="Biblioteca nazionale università di Torino">
+                            alt="Biblioteca nazionale Universitaria di Torino">
                     </a>
 
 
