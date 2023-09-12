@@ -81,7 +81,7 @@
                         <p>
                             <span class="show-metadata">Nakala: </span>
                             <a target="_blank" href="{{ $manuscript->nakala_url }}">
-                                {{ $manuscript->nakala_url }}
+                                Metadata
                             </a>
                         </p>
                     @endif
@@ -90,7 +90,7 @@
                         <p>
                             <span class="show-metadata">DaSCH: </span>
                             <a target="_blank" href="{{ $manuscript->dasch_url }}">
-                                {{ $manuscript->dasch_url }}
+                                Metadata
                             </a>
                         </p>
                     @endif
