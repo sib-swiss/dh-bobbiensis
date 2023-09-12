@@ -118,7 +118,7 @@ Alpine.data("manuscriptShow", (data = []) => ({
                     panels: {
                         // Configure which panels are visible in WindowSideBarButtons
                         info: true,
-                        attribution: false,
+                        attribution: true,
                         canvas: false,
                         annotations: true,
                         search: false,

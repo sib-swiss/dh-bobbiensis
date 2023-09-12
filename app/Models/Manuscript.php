@@ -151,6 +151,11 @@ class Manuscript extends Model implements HasMedia
         $manifest['type'] = 'Manifest';
         $manifest['id'] = url("/iiif/{$this->name}/manifest.json");
         // $manifest['label'] = $this->name;
+        $manifest['attribution'] = 'Codex Bobbiensis G.VII.15 (VL 1).
+                                    <br>
+                                    <a href="https://www.beniculturali.it/" target="_blank">Ministero della Cultura.</a>
+                                    <br>
+                                    <a href="https://bnuto.cultura.gov.it/" target="_blank">Biblioteca Universitaria Nazionale di Torino</a>';
         $manifest['metadata'] = [];
         $creator = $this->getMeta('creator');
         if ($creator) {
