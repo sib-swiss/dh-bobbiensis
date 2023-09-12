@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,6 +32,23 @@ class Annotation extends Model
     public function page()
     {
         return $this->belongsTo(ManuscriptContentMeta::class, 'manuscript_content_meta_id', 'id');
+    }
+
+    public function y(): Attribute
+    {
+        $FragmentSelector = $this->annotationSelectors->where('type', 'FragmentSelector')->first();
+        if ($this->FragmentSelector) {
+            return Attribute::make(
+                get: fn () => null,
+            );
+        }
+
+        $xywh = explode('xywh=', $FragmentSelector->value);
+        [$x, $y, $w ,$h] = explode(',', $xywh[1]);
+
+        return Attribute::make(
+            get: fn () => $y,
+        );
     }
 
     protected static function booted()

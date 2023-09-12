@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Spatie\MediaLibrary\HasMedia;
@@ -203,50 +204,43 @@ class ManuscriptContentMeta extends ManuscriptContent implements HasMedia
         return $this->hasMany(Annotation::class);
     }
 
+    public function annotationsTranscriptions()
+    {
+        return $this->annotations()->whereHas('annotationSelectors', function ($query) {
+            $query->where('type', 'SvgSelector')
+                ->where('value', 'like', '% stroke="#4a90e2" %');
+        });
+    }
+
+    public function annotationsNotes()
+    {
+        return $this->annotations()->whereHas('annotationSelectors', function ($query) {
+            $query->where('type', 'SvgSelector')
+                ->where('value', 'like', '% stroke="#50e3c2" %');
+        });
+    }
+
+    // first transcriptionm, in Y order
+    // then notes, in Y order
+    public function annotationsSorted(): Attribute
+    {
+
+        $annotationSorted = $this->annotationsTranscriptions
+            ->sortBy('y', SORT_REGULAR, false)
+            ->merge(
+                $this->annotationsNotes->sortBy('y', SORT_REGULAR, false)
+            );
+
+        return Attribute::make(
+            get: fn () => $annotationSorted,
+        );
+    }
+
     /**
      * https://iiif.io/api/presentation/3.0/#53-canvas
      */
     public function annotationPage(): object
     {
-
-        $exampleJson = '{
-                            "@context": "http://iiif.io/api/presentation/3/context.json",
-                            "id": "https://iiif.io/api/cookbook/recipe/0306-linking-annotations-to-manifests/annotationpage.json",
-                            "type": "AnnotationPage",
-                            "items": [
-                                        {
-                                            "id": "https://iiif.io/api/cookbook/recipe/0306-linking-annotations-to-manifests/canvas-1/annopage-2/anno-1",
-                                            "type": "Annotation",
-                                            "motivation": "commenting",
-                                            "body": {
-                                                "type": "TextualBody",
-                                                "language": "de",
-                                                "format": "text/plain",
-                                                "value": "Der Gänseliesel-Brunnen"
-                                            },
-                                            "target": {
-                                                "type": "SpecificResource",
-                                                "source": {
-                                                    "id": "https://iiif.io/api/cookbook/recipe/0306-linking-annotations-to-manifests/canvas-1",
-                                                    "type": "Canvas",
-                                                    "partOf": [
-                                                        {
-                                                            "id": "https://iiif.io/api/cookbook/recipe/0306-linking-annotations-to-manifests/manifest.json",
-                                                            "type": "Manifest"
-                                                        }
-                                                    ]
-                                            },
-                                            "selector": {
-                                                    "type": "FragmentSelector",
-                                                    "conformsTo": "http://www.w3.org/TR/media-frags/",
-                                                    "value": "xywh=300,800,1200,1200"
-                                                }                                            
-                                            }                                        
-                                        }
-                                    ]
-                         }';
-
-        $annotationPage = json_decode($exampleJson);
 
         $annotationPage = [];
         $annotationPage['@context'] = 'http://iiif.io/api/presentation/3/context.json';
@@ -254,59 +248,8 @@ class ManuscriptContentMeta extends ManuscriptContent implements HasMedia
         $annotationPage['type'] = 'AnnotationPage';
         $annotationPage['items'] = [];
 
-        $annotationExample1 = [
-            'id' => url("/iiif/{$this->manuscript->name}/canvas/p{$this->pageNumber}/annopage-2/anno-1"),
-            'type' => 'Annotation',
-            'motivation' => 'commenting',
-            'body' => [
-                'type' => 'TextualBody',
-                'language' => 'de',
-                'format' => 'text/plain',
-                'value' => 'Der Gänseliesel-Brunnen',
-            ],
-            'target' => [
-                'type' => 'SpecificResource',
-                'source' => [
-                    'id' => url("/iiif/{$this->manuscript->name}/canvas/p{$this->pageNumber}"),
-                    'type' => 'Canvas',
-                ],
-                'selector' => [
-                    'type' => 'FragmentSelector',
-                    'conformsTo' => 'http://www.w3.org/TR/media-frags/',
-                    'value' => 'xywh=300,800,1200,1200',
-                ],
-            ],
-        ];
-
-        // $annotationPage['items'][] = $annotationExample1;
-        $annotationExample2 = [
-            'id' => url("/iiif/{$this->manuscript->name}/canvas/p{$this->pageNumber}/annopage-2/anno-2"),
-            'type' => 'Annotation',
-            'motivation' => 'commenting',
-            'body' => [
-                'type' => 'TextualBody',
-                'language' => 'en',
-                'format' => 'text/html',
-                'value' => 'test <b>number 2</b><br><i>in italic</i>',
-            ],
-            'target' => [
-                'type' => 'SpecificResource',
-                'source' => [
-                    'id' => url("/iiif/{$this->manuscript->name}/canvas/p{$this->pageNumber}"),
-                    'type' => 'Canvas',
-                ],
-                'selector' => [
-                    'type' => 'FragmentSelector',
-                    'conformsTo' => 'http://www.w3.org/TR/media-frags/',
-                    'value' => 'xywh=1800,800,1200,1200',
-                ],
-            ],
-        ];
-
-        // $annotationPage['items'][] = $annotationExample2;
-
-        // dd($this->annotations);
-        foreach ($this->annotations as $annotation) {
+        $source = url("/iiif/{$this->manuscript->name}/canvas/p{$this->pageNumber}");
+        foreach ($this->annotationsSorted as $annotation) {
 
             $selectors = [];
             foreach ($annotation->annotationSelectors as $selector) {
@@ -329,20 +272,11 @@ class ManuscriptContentMeta extends ManuscriptContent implements HasMedia
                 ],
                 'target' => [
                     'type' => 'SpecificResource',
-                    // 'source' => [
-                    //     'id' => url("/iiif/{$this->manuscript->name}/canvas/p{$this->pageNumber}"),
-                    //     'type' => 'Canvas',
-                    // ],
-                    // canvasId: "http://localhost/iiif/VL 1 Mark 15:46b-16:8/canvas/p1"
-                    'source' => url("/iiif/{$this->manuscript->name}/canvas/p{$this->pageNumber}"),
+                    'source' => $source,
                     'selector' => $selectors,
-                    // [
-                    //     'type' => 'FragmentSelector',
-                    //     'conformsTo' => 'http://www.w3.org/TR/media-frags/',
-                    //     'value' => 'xywh=300,800,1200,1200',
-                    // ],
                 ],
             ];
+
             $annotationPage['items'][] = $annotationItem;
 
         }
