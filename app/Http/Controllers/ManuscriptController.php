@@ -70,6 +70,11 @@ class ManuscriptController extends Controller
         return view('vl1');
     }
 
+    public function about(): View
+    {
+        return view('about');
+    }
+
     public function results(Request $request): View
     {
         $manuscripts = Manuscript::where('published', 1)
