@@ -155,7 +155,7 @@ class Manuscript extends Model implements HasMedia
                                     <br>
                                     <a href="https://www.beniculturali.it/" target="_blank">Ministero della Cultura.</a>
                                     <br>
-                                    <a href="https://bnuto.cultura.gov.it/" target="_blank">Biblioteca Universitaria Nazionale di Torino</a>';
+                                    <a href="https://bnuto.cultura.gov.it/" target="_blank">Biblioteca Nazionale Universitaria di Torino</a>';
         $manifest['metadata'] = [];
         $creator = $this->getMeta('creator');
         if ($creator) {

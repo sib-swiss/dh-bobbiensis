@@ -26,7 +26,12 @@
                         <ul class="hidden items-center justify-center grow gap-6 lg:flex">
                             <li class="block p-1 text-md font-normal leading-normal text-inherit antialiased">
                                 <a class="flex items-centerk" href="{{ route('vl1') }}">
-                                    About VL 1
+                                    VL 1
+                                </a>
+                            </li>
+                            <li class="block p-1 text-md font-normal leading-normal text-inherit antialiased">
+                                <a class="flex items-centerk" href="{{ route('about') }}">
+                                    About
                                 </a>
                             </li>
                             <li class="block p-1 text-md font-normal leading-normal text-inherit antialiased">
@@ -62,7 +67,12 @@
 
                             <li class="block p-1 text-sm font-normal leading-normal text-inherit antialiased">
                                 <a class="flex items-center" href="{{ route('vl1') }}">
-                                    About VL 1
+                                    VL 1
+                                </a>
+                            </li>
+                            <li class="block p-1 text-sm font-normal leading-normal text-inherit antialiased">
+                                <a class="flex items-center" href="{{ route('about') }}">
+                                    About
                                 </a>
                             </li>
 
