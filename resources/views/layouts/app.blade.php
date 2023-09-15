@@ -10,7 +10,7 @@
                         <div>
                             <a href="{{ route('home') }}"
                                 class="mr-4 block cursor-pointer py-1.5 text-md font-normal leading-normal text-inherit antialiased">
-                                Codex Bobbiensis
+                                Codex Bobbiensis (G.VII.15 or VL 1)
                             </a>
                             <small>
                                 <a href="https://bnuto.cultura.gov.it/" target="_blank">Biblioteca
