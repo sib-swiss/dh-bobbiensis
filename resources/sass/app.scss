@@ -61,11 +61,11 @@ select:invalid {
 }
 
 body {
-    @apply font-Merriweather text-gray-800;
+    @apply font-Merriweather text-gray-900;
 }
 h1,
 h2 {
-    @apply text-4xl my-8 text-gray-700;
+    @apply text-4xl my-8;
 }
 
 button[type="submit"] {
@@ -134,12 +134,9 @@ a {
 #v1_table_content {
     @apply border-collapse w-full;
     & > thead > tr > th {
-        @apply bg-gray-200 border-gray-400 border-b-2 border-r-2 border-l-2;
+        @apply border-gray-400 border;
     }
-    & > tbody > tr {
-        // @apply border-gray-400 border-b-2 border-r-2 border-l-2;
-        & > td {
-            @apply text-center;
-        }
+    & > tbody > tr > td {
+        @apply text-center border-gray-400 border p-1;
     }
 }

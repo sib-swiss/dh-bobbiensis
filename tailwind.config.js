@@ -21,14 +21,7 @@ module.exports = withMT({
     },
     content: [
         "./app/**/*.php",
-        "./resources/**/*.html",
-        "./resources/**/*.js",
-        "./resources/**/*.jsx",
-        "./resources/**/*.ts",
-        "./resources/**/*.tsx",
-        "./resources/**/*.php",
-        "./resources/**/*.vue",
-        "./resources/**/*.twig",
+        "./resources/views/**/*.php",
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
     ],
     plugins: [

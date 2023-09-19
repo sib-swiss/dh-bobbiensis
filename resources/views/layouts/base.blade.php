@@ -13,9 +13,6 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}">
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     {{-- @livewireStyles
         @livewireScripts --}}

@@ -4,38 +4,14 @@ import.meta.glob(["../images/**", "../fonts/**"]);
 
 import Alpine from "alpinejs";
 
-// import * as Mirador from "https://unpkg.com/mirador@latest/dist/mirador.min.js";
-
 import * as Mirador from "mirador/dist/mirador.min.js";
 import "@material-tailwind/html/scripts/tabs.js";
 import "@material-tailwind/html/scripts/collapse.js";
 import "@material-tailwind/html/scripts/popover.js";
 import "@material-tailwind/html/scripts/dialog.js";
 
-//import React from "react";
-
-//  import miradorAnnotationPlugin from "./plugins/miradorAnnotationPlugin";
-
-// import miradorAnnotationPlugin from "mirador-annotations/es/plugins/miradorAnnotationPlugin";
-// import externalStorageAnnotationPlugin from "mirador-annotations/es/plugins/externalStorageAnnotationPlugin";
-// import LocalStorageAdapter from "mirador-annotations/es/LocalStorageAdapter";
-// import canvasAnnotationsPlugin from "mirador-annotations/es/plugins/canvasAnnotationsPlugin";
-// import annotationCreationCompanionWindow from "mirador-annotations/es/plugins/annotationCreationCompanionWindow";
-// import windowSideBarButtonsPlugin from "mirador-annotations/es/plugins/windowSideBarButtonsPlugin";
-
-// import AnnototAdapter from "mirador-annotations/es/AnnototAdapter";
-
-// import { miradorAnnotationPlugin  } from "mirador-annotations/umd/mirador-annotations.js";
-
 window.Alpine = Alpine;
 
-// const DummyPlugin = () => <div data-testid="plugin">Plugin</div>;
-// const DummyPlugin = () =>
-//     React.createElement(
-//         "div",
-//         { "data-testid": "plugin" },
-//         "Annotations Categories checkboxes"
-//     );
 
 Alpine.data("manuscriptShow", (data = []) => ({
     miradorInstance: null,
