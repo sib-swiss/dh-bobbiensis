@@ -38,9 +38,10 @@
             opportunity of some IT-development time left at the end of the SNSF MARK16 project to start building this VRE,
             that
             includes 192 digital images. Researchers are now able to study the remaining folios in free access online. We
-            provide a first folio with our editorial model (f. 41r): a Latin transcription with highlighted corresponding
+            provide a first folio with <a href="{{ route('manuscript.show', \App\Models\Manuscript::find(1)->name ) }}">our editorial model </a>(f. 41r): a Latin transcription with highlighted corresponding
             lines
-            on the folios, and editorial notes, see [hyperlink]. A pdf and an xml version of f. 41r can be downloaded from
+            on the folios, and editorial notes.
+            A pdf and an xml version of f. 41r can be downloaded from
             our
             VRE, and on the public open repository <a href="https://doi.org/10.34847/nkl.82341244" target="_blank">Nakala</a>
             (<a href="https://doi.org/10.34847/nkl.82341244" target="_blank">Huma-Num</a>, <a
@@ -56,7 +57,7 @@
 
         <p class="text-justify">
             Readers will find a concise description of the manuscript, as well as a list of its content and an indicative
-            bibliography under the tab [“VL 1”]. I can only express my warmest gratitude to Guglielmo Bartoletti and to
+            bibliography under the tab <a href="{{ route("vl1") }}">“VL 1”</a>. I can only express my warmest gratitude to Guglielmo Bartoletti and to
             Fabio
             Uliana, librarian, for their constant support. My gratitude goes also to Silvano Aldà, IT developer, and to
             Elisa Nury, DH+ scientific researcher, and our IT-SIB colleagues for their support. Finally, I warmly thank
