@@ -85,7 +85,7 @@ deploy_prod:
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
     - ./vendor/bin/envoy run deploy --server=prod
   only:
-    - master
+    - main
   when: manual
 # merge-master-to-mirrored:
 #   stage: deploy
