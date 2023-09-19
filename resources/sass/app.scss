@@ -65,7 +65,7 @@ body {
 }
 h1,
 h2 {
-    @apply text-4xl my-8;
+    @apply text-2xl my-8;
 }
 
 button[type="submit"] {
@@ -132,7 +132,7 @@ a {
 }
 
 #v1_table_content {
-    @apply border-collapse w-full;
+    @apply border-collapse w-full max-w-3xl mx-auto;
     & > thead > tr > th {
         @apply border-gray-400 border;
     }

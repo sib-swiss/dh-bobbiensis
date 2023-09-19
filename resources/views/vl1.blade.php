@@ -84,7 +84,7 @@
         </p>
 
 
-        <h2 id="content" class="text-left">Content of VL 1 (24 Datasets)</h2>
+        <h2 id="content" class="text-left w-full max-w-3xl mx-auto">Content of VL 1 (24 Datasets)</h2>
 
 
         <table id="v1_table_content">
@@ -234,7 +234,8 @@
             <br><br>
 
             C. Clivaz, “Marc 15,34 dans le Codex de Bèze et le Codex Bobbiensis”, in J.-C. Haelewyck and L. Pinchard
-            (eds.), <i>Traditions et traductions des textes bibliques. Études en l'hommage de Christian Bernard Amphoux</i> à
+            (eds.), <i>Traditions et traductions des textes bibliques. Études en l'hommage de Christian Bernard Amphoux</i>
+            à
             l'occasion de son 80e anniversaire, Bruxelles : Safran, <i>forthcoming</i>.
             <br><br>
 
