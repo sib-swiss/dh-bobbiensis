@@ -96,12 +96,12 @@
     "src": "resources/images/sib_logo2023.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-e1175e95.js",
+    "file": "assets/app-f1239db5.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-a9f10fa5.css",
+    "file": "assets/app-539c87a9.css",
     "isEntry": true,
     "src": "resources/sass/app.scss"
   }

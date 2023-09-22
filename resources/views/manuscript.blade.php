@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container px-2  mx-auto ">
+    <div x-data="manuscriptShow({
+        manuscriptName: '{{ $manuscript->name }}',
+        manifest: '{{ route('iiif.presentation.manifest', $manuscript->name) }}'
+    })" class="container px-2  mx-auto ">
 
         <div class="">
             <div class="lg:flex justify-between items-center mb-3 border-b border-gray-800">
@@ -102,14 +105,10 @@
                     <div class="flex justify-end">
 
                         <div>
-                            <button data-ripple-light="true" data-popover-target="menu_folios" class="btn_blue"
-                                {{-- close other menu if open --}}
-                                onClick="if(document.querySelector('[data-popover=\'menu_html\']').classList.contains('opacity-1')) {
-                                            document.querySelector('[data-popover-target=\'menu_html\']').click()
-                                        }">
+                            <button data-ripple-light="true" class="btn_blue" x-on:click="openPdfMenu = ! openPdfMenu">
                                 Folios PDF
                             </button>
-                            <ul role="menu" data-popover="menu_folios" data-popover-placement="bottom-end"
+                            <ul x-show="openPdfMenu" x-transition
                                 class="absolute z-50 min-w-[180px] overflow-auto rounded-md border border-blue-gray-50 bg-white p-3 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none">
                                 @foreach ($manuscript->folios as $folio)
                                     @if ($folio->getFirstMediaUrl('pdf'))
@@ -131,15 +130,11 @@
 
 
                         <div>
-                            <button data-ripple-light="true" data-popover-target="menu_html" class="btn_blue z-50"
-                                {{-- close other menu if open --}}
-                                onClick="if(document.querySelector('[data-popover=\'menu_folios\']').classList.contains('opacity-1')) {
-                                    document.querySelector('[data-popover-target=\'menu_folios\']').click()
-                                }">
+                            <button data-ripple-light="true" class="btn_blue z-50" x-on:click="openTeiMenu = ! openTeiMenu">
                                 Folios TEI/XML
                             </button>
-                            <ul role="menu" data-popover="menu_html" data-popover-placement="bottom-start"
-                                class="absolute z-50 min-w-[180px] overflow-auto rounded-md border border-blue-gray-50 bg-white p-3 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none">
+                            <ul class="absolute z-50 min-w-[180px] overflow-auto rounded-md border border-blue-gray-50 bg-white p-3 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none"
+                                x-show="openTeiMenu" x-transition>
 
                                 @foreach ($manuscript->folios as $folio)
                                     @if ($folio->getFirstMediaUrl('tei'))
@@ -162,9 +157,6 @@
 
 
 
-
-
-                        <div class="opacity-0"></div>
                     </div>
                 </div>
 
@@ -174,12 +166,9 @@
 
         <div class="relative">
             <div class="h-[800px] w-full">
-                <div x-data="manuscriptShow({
-                    manuscriptName: '{{ $manuscript->name }}',
-                    manifest: '{{ route('iiif.presentation.manifest', $manuscript->name) }}'
-                })">
+                <div>
 
-                    <div id="mirador"></div>
+                    <div id="mirador" class=z-50></div>
 
                 </div>
             </div>
