@@ -15,8 +15,9 @@ use Filament\Tables\Table;
 class ManuscriptResource extends Resource
 {
     protected static ?string $model = Manuscript::class;
-    
+
     public static ?string $label = 'Dataset';
+
     protected static ?string $pluralLabel = 'Datasets';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
