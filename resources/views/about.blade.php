@@ -13,7 +13,7 @@
 
 
         <p class="text-justify">The VRE Codex Bobbiensis (<a
-                href="https://codexbobbiensis.sib.swiss">https://codexbobbiensis.sib.swiss</a>) has
+                href="https://bobbiensis.sib.swiss">https://bobbiensis.sib.swiss</a>) has
             resulted from a fruitful collaboration between
             the <i>Biblioteca Nazionale Universitaria di Torino</i> (Italy) and Claire Clivaz, Head of Digital Humanities +
             (SIB,
@@ -34,7 +34,7 @@
         <p class="text-justify">
             Guglielmo Bartoletti, Director of the <i>Biblioteca Nazionale Universitaria di Torino</i> has then graciously
             transmitted
-            digital images of the manuscript to our team for making them available visible on our VRE. We have taken the
+            digital images of the manuscript to our team for making them available visible on a VRE. We have taken the
             opportunity of some IT-development time left at the end of the SNSF MARK16 project to start building this VRE,
             that
             includes 192 digital images. Researchers are now able to study the remaining folios in free access online. We
@@ -44,8 +44,8 @@
             A pdf and an xml version of f. 41r can be downloaded from
             our
             VRE, and on the public open repository <a href="https://doi.org/10.34847/nkl.82341244" target="_blank">Nakala</a>
-            (<a href="https://doi.org/10.34847/nkl.82341244" target="_blank">Huma-Num</a>, <a
-                href="https://doi.org/10.34847/nkl.82341244" target="_blank">CNRS</a>). The annotated transcription of the
+            (<a href="https://www.huma-num.fr" target="_blank">Huma-Num</a>, <a
+                href="https://www.cnrs.fr" target="_blank">CNRS</a>). The annotated transcription of the
             next folios
             is
             open to collaboration: if you are interested in transcribing and annotating a dataset, please contact
