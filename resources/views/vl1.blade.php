@@ -12,15 +12,15 @@
             <br><br>
 
             <a href="#description">1. Description</a><br>
-            <a href="#content">2. Content of VL 1(24 Datasets)</a><br>
+            <a href="#content">2. Content of VL 1 (24 Datasets)</a><br>
             <a href="#references">3. Selected References</a>
 
 
 
-        <h2 id="description" class="text-left">Brief Description of VL 1</h2>
+        <h2 id="description" class="text-left">1. Brief Description of VL 1</h2>
 
         <p class="text-justify">
-            Dated between 380 and 420 CE by Elias Avery Lowe, G.VII.15 or codex k or VL 1 or Codex Bobbiensis, is one of the
+            Dated between 380 and 420 CE by Elias Avery Lowe, G.VII.15 or VL 1 or Codex Bobbiensis is one of the
             oldest Latin manuscripts of the Gospels. It includes Mk 8:8 to Mt 15:36a on 96 folios (lac. 1 folio between 48v
             and
             49r and 4 folios between 94v and 95r). This quite small codex has folios of 18-19cm high X 15,5-16cm large.
@@ -62,7 +62,7 @@
             was not uneducated, for he writes with a firm and practiced hand” (1977, 315).
             <br><br>
 
-            But thanks to a meticulous linguistic analysis, Pieter Willem Hoogterp demonstrated in 1930 that Codex
+            Thanks to a meticulous linguistic analysis, Pieter Willem Hoogterp demonstrated in 1930 that Codex
             Bobbiensis is
             a direct copy of “a very ancient archetype in cursive writing, perhaps difficult to decipher for a copyist who
             had
@@ -84,7 +84,7 @@
         </p>
 
 
-        <h2 id="content" class="text-left w-full max-w-3xl mx-auto">Content of VL 1 (24 Datasets)</h2>
+        <h2 id="content" class="text-left w-full max-w-3xl mx-auto">2. Content of VL 1 (24 Datasets)</h2>
 
 
         <table id="v1_table_content">
@@ -214,7 +214,7 @@
 
 
 
-        <h2 id="references" class="text-left">Some References</h2>
+        <h2 id="references" class="text-left">3. Selected References</h2>
 
         <p class="text-justify">
 
@@ -239,31 +239,35 @@
             l'occasion de son 80e anniversaire, Bruxelles : Safran, <i>forthcoming</i>.
             <br><br>
 
-            H.A.G. Houghton, The Latin New Testament: A Guide to its Early History, Texts, and Manuscripts, Oxford
+            H.A.G. Houghton, <i>The Latin New Testament: A Guide to its Early History, Texts, and Manuscripts</i>, Oxford
             Scholarship
             Online 2016, p. 22-23 and 210.
             <br><br>
 
-            P. W. Hoogterp, Etude sur le Latin du Codex Bobiensis (k) des Evangiles, Utrecht : Veenman, 1930.
+            P. W. Hoogterp, <i>Etude sur le Latin du Codex Bobiensis (k) des Evangiles</i>, Utrecht : Veenman, 1930.
             <br><br>
-            M. Larsen, “A Real-and-Imagined Biography of a Gospel Manuscript”, Early Christianity 12.3 (2021), p. 103-131.
+            M. Larsen, “A Real-and-Imagined Biography of a Gospel Manuscript”, <i>Early Christianity</i> 12.3 (2021), p.
+            103-131.
             <br><br>
 
 
 
-            E. A. Lowe, Codices Latini Antiquiores. A Palaeographical Guide to Latin Manuscripts Prior to the Ninth Century,
+            E. A. Lowe, <i>Codices Latini Antiquiores</i>. <i>A Palaeographical Guide to Latin Manuscripts Prior to the
+                Ninth Century</i>,
             Teil IV, Perugia-Verona/Oxford 1947, n° 465, p. 18.
             <br><br>
 
 
 
-            B. M. Metzger, The Early Versions of the New Testament: Their Origin, Transmission and Limitations, Oxford:
+            B. M. Metzger, <i>The Early Versions of the New Testament: Their Origin, Transmission and Limitations</i>,
+            Oxford:
             Oxford
             University Press, 1977; Oxford Scholarship Online, 2011.
             <br><br>
-            D. C. Parker, “Unequally Yoked: The Present State of the Codex Bobbiensis”, in idem, Manuscripts, Texts,
-            Theology,
-            Collected Papers 1977-2007, Arbeiten zur neutestamentlichen Textforschung (ANTT 40), Berlin: de Gruyter, 2009,
+            D. C. Parker, “Unequally Yoked: The Present State of the Codex Bobbiensis”, in idem, <i>
+                Manuscripts, Texts,
+                Theology, Collected Papers 1977-2007, Arbeiten zur neutestamentlichen Textforschung
+            </i> (ANTT 40), Berlin: de Gruyter, 2009,
             p.
             25-32 (1991 reprint); https://www.jstor.org/stable/23965317.
             <br><br>
@@ -271,21 +275,26 @@
             in
             fac-simile per cura della Regia Accademia delle Scienze di Torino. Torino, Casa Editrice d’Opere Tecniche lng.
             G.
-            Molfese, 1913, di pp. 70 di testo e 96 tavole doppie in fotocollografia (cm. 25 X 35)”, Rivista di Filologia et
-            di
-            Istruzione Classica LXII (1914), p. 355-358.
+            Molfese, 1913, di pp. 70 di testo e 96 tavole doppie in fotocollografia (cm. 25 X 35)”, <i>
+                Rivista di Filologia et
+                di
+                Istruzione Classica LXII
+            </i> (1914), p. 355-358.
             <br><br>
-            H. von Soden, Das lateinische Neue Testament in Afrika zur Zeit Cyprians, Leipzig: J. C. Hinrichs’sche
+            H. von Soden, <i>Das lateinische Neue Testament in Afrika zur Zeit Cyprians</i>, Leipzig: J. C. Hinrichs’sche
             Buchhandlung,
             1909, p. 106-134.
             <br><br>
-            B. G. Upton, Hearing Mark’s Endings (BIS 79), Brill, 2006.
+            B. G. Upton, <i>Hearing Mark’s Endings</i> (BIS 79), Brill, 2006.
             <br><br>
-            J. Wordsworth et al. (eds.), Portions of the Gospels according to St. Mark and St. Matthew from the Bobbio Ms.
-            (k)
-            Now Number G. VII.15 at the National Library at Turin, together with Other Fragments of the Gospels from Six
-            Mss. At
-            the Libraries of St. Gall, Coire, Milan and Berne (usually cited as n, o, p, a2, s and t), Oxford: Clarendon,
+            J. Wordsworth et al. (eds.), <i>Portions of the Gospels according to St. Mark and St. Matthew from the Bobbio
+                Ms.
+                (k)
+                Now Number G. VII.15 at the National Library at Turin
+                , together with Other Fragments of the Gospels from Six
+                Mss. At
+                the Libraries of St. Gall, Coire, Milan and Berne (usually cited as n, o, p, a2, s and t)</i>, Oxford:
+            Clarendon,
             1886.
         </p>
 
