@@ -66,7 +66,7 @@
             Humanities, it becomes possible to bring to life such a venerable manuscript. But nothing, of course, will
             replace a
             personal visit to the Codex Bobbiensis in Turin. As told by Luke once, it matters to “have become eyewitnesses,”
-            αὐτόπται […] γενόμενοι (Luke 1:2).
+            <span class="font-gentiumPlus">αὐτόπται […] γενόμενοι</span> (Luke 1:2).
         </p>
 
 
