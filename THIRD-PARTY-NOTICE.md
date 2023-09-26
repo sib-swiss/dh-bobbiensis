@@ -17,9 +17,8 @@ Do Not Translate or Localize
 8. FILAMENT/FILAMENT (https://github.com/filamentphp/filament/blob/2.x/LICENSE.md)
 9. SPATIE/LARAVEL-MEDIALIBRARY (https://github.com/spatie/laravel-medialibrary/blob/main/LICENSE.md)
 10. GENTIUM (https://software.sil.org/gentium/)
-11. ANTINOOUWEB (https://www.evertype.com/fonts/coptic/) (https://github.com/sib-swiss/dh-mr-mark16/blob/main/htdocs/resources/fonts/NTVMR/antinoou-licence.txt)
-12. PONOMAR (https://fontlibrary.org/en/font/ponomar-unicode)
-13. NOTO-SANS-COPTIC (https://fonts.google.com/noto/specimen/Noto+Sans+Coptic/about)
+11. MIRADOR ANNOTATIONS: (https://github.com/ProjectMirador/mirador-annotations)
+12. MATERIAL TAILWIND (https://github.com/creativetimofficial/material-tailwind/blob/main/LICENSE)
 
 LARAVEL NOTICES, INFORMATION, AND LICENSE BEGIN HERE
 
@@ -615,51 +614,3 @@ This font software is free to use, modify and redistribute according to the term
 
 END OF GENTIUM NOTICES, INFORMATION, AND LICENSE
 
-ANTINOOUWEB NOTICES, INFORMATION, AND LICENSE BEGIN HERE
-
----
-
-Antinoou copyright notice
-
-Antinoou is copyright © 2007-2011 Michael Everson and IACS (the International Association for Coptic Studies). All rights including moral rights reserved. Antinoou is a trademark of Michael Everson and IACS. Conversion or alteration of these coded font programs in any way, including conversion into other formats or for any other platform is strictly prohibited. If you wish to see these fonts available in other formats, please contact the copyright holders.
-
-Antinoou available at the Evertype site in Ireland (evertype.com/fonts/coptic/) Antinoou may not be made available through any other medium, including shareware disks, shareware CDs, or commercial bulletin boards, without permission. You may make copies on disk for others as long as no fee whatsoever is charged and as long as this documentation is included.
-
-Antinoou Licence
-
-Antinoou is freeware. It may be used freely, embedded in documents, given to printers. It may not be sold.
-
-Your licence is permission to use these fonts; you do not own them and may not alter them in any way whatsoever.
-
-If your company is interested in licensing Antinoou for bundling with your software, please get in touch with the copyright holders directly.
-
-If you are extremely enthusiastic about Antinoou and wish to offer a contribution for its continued development, you may make a donation by PayPal (www.paypal.com) to everson@evertype.com.
-
-Michael Everson, Evertype, Cnoc Sceichin, Leac an Anfa, Cathair na Mart, Co. Mhaigh Eo, Eire, 2011-07-04
-everson@evertype.com
-
----
-
-END OF ANTINOOUWEB NOTICES, INFORMATION, AND LICENSE
-
-PONOMAR NOTICES, INFORMATION, AND LICENSE BEGIN HERE
-
----
-
-License OFL ([SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL))
-
----
-
-END OF PONOMAR NOTICES, INFORMATION, AND LICENSE
-
-NOTO-SANS-COPTIC NOTICES, INFORMATION, AND LICENSE BEGIN HERE
-
----
-
-These fonts are licensed under the [Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL).
-You can use them freely in your products & projects - print or digital, commercial or otherwise.
-This isn't legal advice, please consider consulting a lawyer and see the full license for all details.
-
----
-
-END OF NOTO-SANS-COPTIC NOTICES, INFORMATION, AND LICENSE
