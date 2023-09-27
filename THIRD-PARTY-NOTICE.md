@@ -1,8 +1,8 @@
-The SNSF MARK16 BOBBIENSIS uses third party material from the projects listed below.
+The BOBBIENSIS API uses third party material from the projects listed below. Its creation has been supported by the SNSF MARK16.
 
-The original copyright notice and the license under which MARK16 received such third party material are set forth below. MARK16 reserves all other rights not expressly granted, whether by implication, estoppel or otherwise. In the event that we accidentally failed to list a required notice, please bring it to our attention and email us: claire.clivaz@sib.swiss
+The original copyright notice and the license under which SIB Swiss Institute of Bioinformatics received such third party material are set forth below. SIB Swiss Institute of Bioinformatics reserves all other rights not expressly granted, whether by implication, estoppel or otherwise. In the event that we accidentally failed to list a required notice, please bring it to our attention and email us: claire.clivaz@sib.swiss
 
-© 2021 SNSF MARK16, DH+, SIB Swiss Institute of Bioinformatics, Lausanne (CH)
+© 2023 SIB Swiss Institute of Bioinformatics, Lausanne (CH)
 
 THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
 Do Not Translate or Localize
@@ -233,18 +233,7 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
 END OF TERMS AND CONDITIONS
 
-APPENDIX: How to apply the Apache License to your work.
-
-      To apply the Apache License to your work, attach the following
-      boilerplate notice, with the fields enclosed by brackets "[]"
-      replaced with your own identifying information. (Don't include
-      the brackets!)  The text should be enclosed in the appropriate
-      comment syntax for the file format. We also recommend that a
-      file or class name and description of purpose be included on the
-      same "printed page" as the copyright notice for easier
-      identification within third-party archives.
-
-Copyright [yyyy] [name of copyright owner]
+Copyright 2023 Claire Clivaz
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -614,3 +603,31 @@ This font software is free to use, modify and redistribute according to the term
 
 END OF GENTIUM NOTICES, INFORMATION, AND LICENSE
 
+MIRADOR ANNOTATIONS
+
+IDEM MIRADOR NOTICES, INFORMATION, AND LICENSE (see above).
+
+END of MIRADOR ANNOTATIONS NOTICES, INFORMATION, AND LICENSE
+
+MATERIAL TAILWIND
+
+##### MIT License
+
+Copyright © 2022 Material Tailwind by [Creative Tim](https://www.creative-tim.com?ref=material-tailwind)
+
+<br />
+Permission is hereby granted, free of charge, to any person obtaining a copy of this
+software and associated documentation files (the "Software"), to deal in the Software
+without restriction, including without limitation the rights to use, copy, modify,
+merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to the following
+conditions:
+
+<br />
+
+The above copyright notice and this permission notice shall be included in all copies
+or substantial portions of the Software.
+
+<br />
+
+END of MATERIAL TAILWING NOTICES, INFORMATION, AND LICENSE
