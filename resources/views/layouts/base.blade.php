@@ -36,7 +36,7 @@
                     </a>
                 </div>
                 <div class="md:w-1/2 py-6">
-                    <a href="#" class="navlink" target="_blank">
+                    <a href="https://github.com/sib-swiss/dh-bobbiensis" class="navlink" target="_blank">
                         <img class="h-10 inline" src="{{ Vite::asset('resources/images/logo-GitHub-Mark-64px.png') }}"
                             alt="github">
                     </a>
