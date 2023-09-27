@@ -1,4 +1,4 @@
-The BOBBIENSIS API uses third party material from the projects listed below. Its creation has been supported by the SNSF MARK16.
+The BOBBIENSIS Web Application uses third party material from the projects listed below. Its creation has been supported by the SNSF MARK16.
 
 The original copyright notice and the license under which SIB Swiss Institute of Bioinformatics received such third party material are set forth below. SIB Swiss Institute of Bioinformatics reserves all other rights not expressly granted, whether by implication, estoppel or otherwise. In the event that we accidentally failed to list a required notice, please bring it to our attention and email us: claire.clivaz@sib.swiss
 
