@@ -1,6 +1,6 @@
 # Bobbiensis
 
-(C) Copyright SIB Swiss Institute of Bioinformatics 2023
+(C) Copyright SIB Swiss Institute of Bioinformatics 2023, GPL-3.0 licence.
 
 ## Local development
 
